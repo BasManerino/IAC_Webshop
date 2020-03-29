@@ -1,49 +1,50 @@
 package model;
 
-import java.util.*;
+import java.util.List;
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
+@Entity
+@Table(name = "address")
 public class Address {
 
-	public Address(Collection<Account> customers, int id, String street, String city, String state, String postalCode,
-			String country, String number) {
-		super();
-		this.customers = customers;
-		this.id = id;
-		this.street = street;
-		this.city = city;
-		this.state = state;
-		this.postalCode = postalCode;
-		this.country = country;
-		this.number = number;
-	}
-
-	Collection<Account> customers;
-	private int id;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
 	private String street;
+	private String house_number;
 	private String city;
 	private String state;
-	private String postalCode;
+	private String postal_code;
 	private String country;
-	private String number;
 
-	public boolean validate() {
-		// TODO - implement Address.validate
-		throw new UnsupportedOperationException();
+	@OneToMany(mappedBy = "address", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	private List<Account> accounts;
+
+	public Address(String street, String house_number, String city, String state, String postal_code, String country) {
+		this.street = street;
+		this.house_number = house_number;
+		this.city = city;
+		this.state = state;
+		this.postal_code = postal_code;
+		this.country = country;
+	}
+	
+	public Address() {
+		
 	}
 
-	public Collection<Account> getCustomers() {
-		return customers;
-	}
-
-	public void setCustomers(Collection<Account> customers) {
-		this.customers = customers;
-	}
-
-	public int getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
@@ -71,12 +72,12 @@ public class Address {
 		this.state = state;
 	}
 
-	public String getPostalCode() {
-		return postalCode;
+	public String getPostal_code() {
+		return postal_code;
 	}
 
-	public void setPostalCode(String postalCode) {
-		this.postalCode = postalCode;
+	public void setPostal_code(String postalCode) {
+		this.postal_code = postalCode;
 	}
 
 	public String getCountry() {
@@ -87,12 +88,22 @@ public class Address {
 		this.country = country;
 	}
 
-	public String getNumber() {
-		return number;
+	public String getHouse_number() {
+		return house_number;
 	}
 
-	public void setNumber(String number) {
-		this.number = number;
+	public void setHouse_number(String houseNumber) {
+		this.house_number = houseNumber;
 	}
+
+	public List<Account> giveAccounts() {
+		return accounts;
+	}
+
+	public void setAccounts(List<Account> accounts) {
+		this.accounts = accounts;
+	}
+	
+	
 
 }

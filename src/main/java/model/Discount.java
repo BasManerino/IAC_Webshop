@@ -1,70 +1,87 @@
 package model;
 
 import java.util.*;
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.Table;
 
+@Entity
+@Table(name = "discount")
 public class Discount {
 
-	Collection<Product> products;
-	private int id;
-	private int product;
-	private float price;
-	private Date from;
-	private Date until;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
+	private double price;
+	private Date from_date;
+	private Date until_date;
 	private String adText;
-	
-	public Discount(Collection<Product> products, int id, int product, float price, Date from, Date until,
-			String adText) {
-		super();
-		this.products = products;
-		this.id = id;
-		this.product = product;
+
+	@ManyToMany(cascade = CascadeType.ALL)
+	@JoinTable(name = "product_discount", joinColumns = @JoinColumn(name = "discount_id", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "product_id", referencedColumnName = "id"))
+	private List<Product> products;
+
+	public Discount(double price, Date from, Date until, String adText) {
 		this.price = price;
-		this.from = from;
-		this.until = until;
+		this.from_date = from;
+		this.until_date = until;
 		this.adText = adText;
 	}
-	
-	public Collection<Product> getProducts() {
-		return products;
+
+	public Discount() {
 	}
-	public void setProducts(Collection<Product> products) {
-		this.products = products;
-	}
-	public int getId() {
+
+	public Long getId() {
 		return id;
 	}
-	public void setId(int id) {
+
+	public void setId(Long id) {
 		this.id = id;
 	}
-	public int getProduct() {
-		return product;
-	}
-	public void setProduct(int product) {
-		this.product = product;
-	}
-	public float getPrice() {
+
+	public double getPrice() {
 		return price;
 	}
-	public void setPrice(float price) {
+
+	public void setPrice(double price) {
 		this.price = price;
 	}
-	public Date getFrom() {
-		return from;
-	}
-	public void setFrom(Date from) {
-		this.from = from;
-	}
-	public Date getUntil() {
-		return until;
-	}
-	public void setUntil(Date until) {
-		this.until = until;
-	}
+
 	public String getAdText() {
 		return adText;
 	}
+
 	public void setAdText(String adText) {
 		this.adText = adText;
 	}
 
+	public Date getFrom_date() {
+		return from_date;
+	}
+
+	public void setFrom_date(Date from_date) {
+		this.from_date = from_date;
+	}
+
+	public Date getUntil_date() {
+		return until_date;
+	}
+
+	public void setUntil_date(Date until_date) {
+		this.until_date = until_date;
+	}
+
+	public List<Product> giveProducts() {
+		return products;
+	}
+
+	public void setProducts(List<Product> products) {
+		this.products = products;
+	}
 }

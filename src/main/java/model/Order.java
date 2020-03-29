@@ -1,50 +1,52 @@
 package model;
 
 import java.util.*;
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
+import org.springframework.data.rest.core.annotation.RestResource;
+
+@Entity
+@Table(name = "order_table")
 public class Order {
 
-	public Order(Account customer, Collection<Product> products, int id, Date date, float totalPrice) {
-		super();
-		this.customer = customer;
-		this.products = products;
-		this.id = id;
-		this.date = date;
-		this.totalPrice = totalPrice;
-	}
-
-	Account customer;
-	Collection<Product> products;
-	private int id;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
 	private Date date;
-	private float totalPrice;
+	private double total_price;
 
-	public Order getCurrentOrderValue() {
-		// TODO - implement Order.getCurrentOrderValue
-		throw new UnsupportedOperationException();
+	@ManyToOne
+	@JoinColumn(name = "account_id", nullable = false)
+	@RestResource(path = "orderAccount", rel = "account")
+	private Account account;
+
+	@ManyToMany(cascade = CascadeType.ALL)
+	@JoinTable(name = "product_order", joinColumns = @JoinColumn(name = "order_id", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "product_id", referencedColumnName = "id"))
+	private List<Product> products;
+
+	public Order(Date date, double total_price, Account account) {
+		this.date = date;
+		this.total_price = total_price;
+		this.account = account;
 	}
 
-	public Account getCustomer() {
-		return customer;
+	public Order() {
 	}
 
-	public void setCustomer(Account customer) {
-		this.customer = customer;
-	}
-
-	public Collection<Product> getProducts() {
-		return products;
-	}
-
-	public void setProducts(Collection<Product> products) {
-		this.products = products;
-	}
-
-	public int getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
@@ -56,12 +58,27 @@ public class Order {
 		this.date = date;
 	}
 
-	public float getTotalPrice() {
-		return totalPrice;
+	public double getTotal_price() {
+		return total_price;
 	}
 
-	public void setTotalPrice(float totalPrice) {
-		this.totalPrice = totalPrice;
+	public void setTotal_price(double total_price) {
+		this.total_price = total_price;
 	}
 
+	public Account giveAccount() {
+		return account;
+	}
+
+	public void setAccount(Account account) {
+		this.account = account;
+	}
+
+	public List<Product> giveProducts() {
+		return products;
+	}
+
+	public void setProducts(List<Product> products) {
+		this.products = products;
+	}
 }

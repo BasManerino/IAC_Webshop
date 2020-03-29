@@ -1,75 +1,61 @@
 package model;
 
 import java.util.*;
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+import org.springframework.data.rest.core.annotation.RestResource;
 
-public class Account {
+@Entity
+@Table(name = "account")
+public class Account{
 
-	public Account(Address address, Role role, Collection<Order> orders, int id, Date createdOn, String name,
-			String phone, String email) {
-		super();
-		this.address = address;
-		this.role = role;
-		this.orders = orders;
-		this.id = id;
-		this.createdOn = createdOn;
-		this.name = name;
-		this.phone = phone;
-		this.email = email;
-	}
-
-	Address address;
-	Role role;
-	Collection<Order> orders;
-	
-	private int id;
-	private Date createdOn;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
+	private Date created_on;
 	private String name;
 	private String phone;
 	private String email;
 
-	public boolean isActive() {
-		// TODO - implement Account.isActive
-		throw new UnsupportedOperationException();
-	}
+	@ManyToOne
+	@JoinColumn(name = "address_id")
+	@RestResource(path = "accountAddress", rel = "address")
+	private Address address;
 
-	public Address getAddress() {
-		return address;
-	}
+	@ManyToOne
+	@JoinColumn(name = "role_id")
+	@RestResource(path = "accountRole", rel = "role")
+	private Role role;
 
-	public void setAddress(Address address) {
+	@OneToMany(mappedBy = "account", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	private List<Order> orders;
+
+	public Account(Date createdOn, String name, String phone, String email, Address address, Role role) {
+		this.created_on = createdOn;
+		this.name = name;
+		this.phone = phone;
+		this.email = email;
 		this.address = address;
-	}
-
-	public Role getRole() {
-		return role;
-	}
-
-	public void setRole(Role role) {
 		this.role = role;
 	}
 
-	public Collection<Order> getOrders() {
-		return orders;
+	public Account() {
 	}
 
-	public void setOrders(Collection<Order> orders) {
-		this.orders = orders;
-	}
-
-	public int getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
-	}
-
-	public Date getCreatedOn() {
-		return createdOn;
-	}
-
-	public void setCreatedOn(Date createdOn) {
-		this.createdOn = createdOn;
 	}
 
 	public String getName() {
@@ -94,6 +80,38 @@ public class Account {
 
 	public void setEmail(String email) {
 		this.email = email;
+	}
+
+	public Date getCreated_on() {
+		return created_on;
+	}
+
+	public void setCreated_on(Date created_on) {
+		this.created_on = created_on;
+	}
+
+	public Address giveAddress() {
+		return address;
+	}
+
+	public void setAddress(Address address) {
+		this.address = address;
+	}
+
+	public Role giveRole() {
+		return role;
+	}
+
+	public void setRole(Role role) {
+		this.role = role;
+	}
+
+	public List<Order> giveOrders() {
+		return orders;
+	}
+
+	public void setOrders(List<Order> orders) {
+		this.orders = orders;
 	}
 
 }
