@@ -1,6 +1,7 @@
 package model;
 
 import java.util.*;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -19,7 +20,8 @@ public class Product {
 	private Long id;
 	private String name;
 	private String description;
-	private double price;
+	private double normal_price;
+	private String discount_price;
 	private String imageId;
 
 	@ManyToMany
@@ -32,10 +34,11 @@ public class Product {
 	@ManyToMany(mappedBy = "products")
 	private List<Order> orders;
 
-	public Product(String name, String description, double price, String imageId) {
+	public Product(String name, String description, double normal_price, String discount_price, String imageId) {
 		this.name = name;
 		this.description = description;
-		this.price = price;
+		this.normal_price = normal_price;
+		this.discount_price = discount_price;
 		this.imageId = imageId;
 	}
 
@@ -66,12 +69,20 @@ public class Product {
 		this.description = description;
 	}
 
-	public double getPrice() {
-		return price;
+	public double getNormal_price() {
+		return normal_price;
 	}
 
-	public void setPrice(double price) {
-		this.price = price;
+	public void setNormal_price(double normal_price) {
+		this.normal_price = normal_price;
+	}
+
+	public String getDiscount_price() {
+		return discount_price;
+	}
+
+	public void setDiscount_price(String discount_price) {
+		this.discount_price = discount_price;
 	}
 
 	public String getImageId() {

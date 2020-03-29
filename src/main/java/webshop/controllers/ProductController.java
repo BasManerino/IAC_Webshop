@@ -12,7 +12,7 @@ import model.Product;
 import repositories.ProductRepository;
 import webshop.services.assemblers.ProductModelAssembler;
 import webshop.services.converters.Converter;
-import webshop.services.datacheckers.ProductDataChecker;
+import webshop.services.dataCheckers.ProductDataChecker;
 import webshop.services.exceptions.RequestNotFoundException;
 import webshop.services.exceptions.UnableToUpdateException;
 
@@ -25,7 +25,8 @@ public class ProductController {
 	private final Converter converter;
 	private final ProductDataChecker dataChecker;
 
-	ProductController(ProductRepository repository, ProductModelAssembler assembler, Converter converter, ProductDataChecker dataChecker) {
+	ProductController(ProductRepository repository, ProductModelAssembler assembler, Converter converter,
+			ProductDataChecker dataChecker) {
 		this.repository = repository;
 		this.assembler = assembler;
 		this.converter = converter;
@@ -34,6 +35,12 @@ public class ProductController {
 
 	@GetMapping
 	public CollectionModel<EntityModel<Product>> getAllProducts() {
+		List<Product> productsForDiscountCheck = (List<Product>) repository.findAll();
+		for (int i = 0; i < productsForDiscountCheck.size(); i++) {
+			Product product = dataChecker.discountChecker(productsForDiscountCheck.get(i));
+			productsForDiscountCheck.set(i, product);
+		}
+
 		Stream<Product> stream = converter.toStream(repository.findAll());
 		List<EntityModel<Product>> products = stream.map(assembler::toModel).collect(Collectors.toList());
 
@@ -44,6 +51,7 @@ public class ProductController {
 	@GetMapping("/{id}")
 	public EntityModel<Product> getProduct(@PathVariable Long id) {
 		Product product = repository.findById(id).orElseThrow(() -> new RequestNotFoundException("product", id));
+		product = dataChecker.discountChecker(product);
 
 		return assembler.toModel(product);
 	}
@@ -54,18 +62,19 @@ public class ProductController {
 			Product productToSave = dataChecker.categoriesListChecker(newProduct);
 			productToSave.setId(null);
 			Product savedProduct = repository.save(productToSave);
-			
+
 			EntityModel<Product> entityModel = new EntityModel<>(savedProduct,
 					linkTo(methodOn(ProductController.class).getProduct(savedProduct.getId())).withSelfRel());
 
-			return ResponseEntity.created(new URI(entityModel.getRequiredLink(IanaLinkRelations.SELF).getHref())).header("Product Name", savedProduct.getName())
-					.body(entityModel);
+			return ResponseEntity.created(new URI(entityModel.getRequiredLink(IanaLinkRelations.SELF).getHref()))
+					.header("Product Name", savedProduct.getName()).body(entityModel);
 		} catch (URISyntaxException | RuntimeException e) {
 			System.out.print(e);
-			return ResponseEntity.badRequest().body("Unable to create product: " + newProduct.getId()+"\nPlease check the data");
+			return ResponseEntity.badRequest()
+					.body("Unable to create product: " + newProduct.getId() + "\nPlease check the data");
 		}
 	}
-	
+
 	@SuppressWarnings("unused")
 	@PutMapping("/{id}")
 	ResponseEntity<?> updateProduct(@RequestBody Product newProduct, @PathVariable Long id) {
@@ -73,7 +82,7 @@ public class ProductController {
 			// This made to prevent make a new product if there's no product with such id
 			Product roleTest = repository.findById(id).orElseThrow(() -> new UnableToUpdateException("product", id));
 
-			Product productToUpdate = newProduct;
+			Product productToUpdate = dataChecker.categoriesListChecker(newProduct);
 			productToUpdate.setId(id);
 			Product updatedProduct = repository.save(productToUpdate);
 

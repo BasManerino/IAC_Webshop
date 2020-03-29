@@ -21,12 +21,12 @@ insert into order_table (id, date, total_price, account_id) values (3, '2020-03-
 insert into order_table (id, date, total_price, account_id) values (4, '2020-03-24', 15.3, 2);
 insert into order_table (id, date, total_price, account_id) values (5, '2020-03-25', 16.3, 2);
 
-insert into product (id, name, description, price, image_id) values (1, 'Shoes', 'Black Shoes', 25.99, 'image');
-insert into product (id, name, description, price, image_id) values (2, 'Shoes', 'Red Shoes', 26.99, 'image');
-insert into product (id, name, description, price, image_id) values (3, 'Shirt', 'Blue Shirt', 27.99, 'image');
-insert into product (id, name, description, price, image_id) values (4, 'Shirt', 'Purple Shirt', 28.99, 'image');
-insert into product (id, name, description, price, image_id) values (5, 'Jacket', 'Gray Jacket', 29.99, 'image');
-insert into product (id, name, description, price, image_id) values (6, 'Jacket', 'Brown Jacket', 30.99, 'image');
+insert into product (id, name, description, normal_price, discount_price, image_id) values (1, 'Shoes', 'Black Shoes', 25.99, 'Geen', 'image');
+insert into product (id, name, description, normal_price, discount_price, image_id) values (2, 'Shoes', 'Red Shoes', 26.99, 'Geen', 'image');
+insert into product (id, name, description, normal_price, discount_price, image_id) values (3, 'Shirt', 'Blue Shirt', 27.99, 'Geen', 'image');
+insert into product (id, name, description, normal_price, discount_price, image_id) values (4, 'Shirt', 'Purple Shirt', 28.99, 'Geen', 'image');
+insert into product (id, name, description, normal_price, discount_price, image_id) values (5, 'Jacket', 'Gray Jacket', 29.99, 'Geen', 'image');
+insert into product (id, name, description, normal_price, discount_price, image_id) values (6, 'Jacket', 'Brown Jacket', 30.99, 'Geen', 'image');
 
 insert into order_product (product_id, order_id) values (1,2);
 insert into order_product (product_id, order_id) values (2,2);
@@ -47,9 +47,9 @@ insert into product_category (product_id, category_id) values (4,2);
 insert into product_category (product_id, category_id) values (5,2);
 insert into product_category (product_id, category_id) values (6,2);
 
-insert into discount (id, price, from_date, until_date, ad_text) values (1, 20, '2020-02-03', '2020-3-03', 'discount ad text1');
-insert into discount (id, price, from_date, until_date, ad_text) values (2, 15, '2020-01-18', '2020-3-13', 'discount ad text2');
-insert into discount (id, price, from_date, until_date, ad_text) values (3, 10, '2020-01-03', '2020-4-23', 'discount ad text3');
+insert into discount (id, percentage, from_date, until_date, ad_text) values (1, 20, '2020-02-03', '2020-3-03', 'Discount 20% from 2020-02-03 until 2020-03-03');
+insert into discount (id, percentage, from_date, until_date, ad_text) values (2, 15, '2020-01-18', '2020-3-13', 'Discount 15% from 2020-01-18 until 2020-03-13');
+insert into discount (id, percentage, from_date, until_date, ad_text) values (3, 10, '2020-01-03', '2020-4-23', 'Discount 10% from 2020-01-03 until 2020-04-23');
 
 insert into discount_product (product_id, discount_id) values (3, 1);
 insert into discount_product (product_id, discount_id) values (2, 1);

@@ -12,6 +12,7 @@ import model.Discount;
 import repositories.DiscountRepository;
 import webshop.services.assemblers.DiscountModelAssembler;
 import webshop.services.converters.Converter;
+import webshop.services.dataCheckers.DiscountDataChecker;
 import webshop.services.exceptions.RequestNotFoundException;
 import webshop.services.exceptions.UnableToUpdateException;
 
@@ -22,16 +23,25 @@ public class DiscountController {
 	private final DiscountRepository repository;
 	private final DiscountModelAssembler assembler;
 	private final Converter converter;
+	private final DiscountDataChecker dataChecker;
 
-	DiscountController(DiscountRepository repository, DiscountModelAssembler assembler, Converter converter) {
+	DiscountController(DiscountRepository repository, DiscountModelAssembler assembler, Converter converter,
+			DiscountDataChecker dataChecker) {
 		this.repository = repository;
 		this.assembler = assembler;
 		this.converter = converter;
+		this.dataChecker = dataChecker;
 	}
 
 	@GetMapping
 	public CollectionModel<EntityModel<Discount>> getAllDiscounts() {
-		Stream<Discount> stream = converter.toStream(repository.findAll());
+		List<Discount> discountsForAdTextCheck = (List<Discount>) repository.findAll();
+		for (int i = 0; i < discountsForAdTextCheck.size(); i++) {
+			Discount discount = dataChecker.discountAdTextChecker(discountsForAdTextCheck.get(i));
+			discountsForAdTextCheck.set(i, discount);
+		}
+
+		Stream<Discount> stream = converter.toStream(discountsForAdTextCheck);
 		List<EntityModel<Discount>> discounts = stream.map(assembler::toModel).collect(Collectors.toList());
 
 		return new CollectionModel<>(discounts,
@@ -40,8 +50,8 @@ public class DiscountController {
 
 	@GetMapping("/{id}")
 	public EntityModel<Discount> getDiscount(@PathVariable Long id) {
-
 		Discount discount = repository.findById(id).orElseThrow(() -> new RequestNotFoundException("discount", id));
+		discount = dataChecker.discountAdTextChecker(discount);
 
 		return assembler.toModel(discount);
 	}
@@ -67,9 +77,10 @@ public class DiscountController {
 	@PutMapping("/{id}")
 	ResponseEntity<?> updateDiscount(@RequestBody Discount newDiscount, @PathVariable Long id) {
 		try {
-			//This made to prevent make a new discount if there's no discount with such id
-			Discount discountTest = repository.findById(id).orElseThrow(() -> new UnableToUpdateException("discount", id));
-			
+			// This made to prevent make a new discount if there's no discount with such id
+			Discount discountTest = repository.findById(id)
+					.orElseThrow(() -> new UnableToUpdateException("discount", id));
+
 			Discount discountToUpdate = newDiscount;
 			discountToUpdate.setId(id);
 			Discount updatedDiscount = repository.save(discountToUpdate);

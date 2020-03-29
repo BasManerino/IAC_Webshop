@@ -17,7 +17,7 @@ public class Discount {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	private double price;
+	private int percentage;
 	private Date from_date;
 	private Date until_date;
 	private String adText;
@@ -26,8 +26,8 @@ public class Discount {
 	@JoinTable(name = "discount_product", joinColumns = @JoinColumn(name = "discount_id", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "product_id", referencedColumnName = "id"))
 	private List<Product> products;
 
-	public Discount(double price, Date from, Date until, String adText) {
-		this.price = price;
+	public Discount(int percentage, Date from, Date until, String adText) {
+		this.percentage = percentage;
 		this.from_date = from;
 		this.until_date = until;
 		this.adText = adText;
@@ -44,12 +44,12 @@ public class Discount {
 		this.id = id;
 	}
 
-	public double getPrice() {
-		return price;
+	public int getPercentage() {
+		return percentage;
 	}
 
-	public void setPrice(double price) {
-		this.price = price;
+	public void setPercentage(int percentage) {
+		this.percentage = percentage;
 	}
 
 	public String getAdText() {
