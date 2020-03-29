@@ -23,7 +23,7 @@ public class Discount {
 	private String adText;
 
 	@ManyToMany
-	@JoinTable(name = "product_discount", joinColumns = @JoinColumn(name = "discount_id", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "product_id", referencedColumnName = "id"))
+	@JoinTable(name = "discount_product", joinColumns = @JoinColumn(name = "discount_id", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "product_id", referencedColumnName = "id"))
 	private List<Product> products;
 
 	public Discount(double price, Date from, Date until, String adText) {

@@ -5,6 +5,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
@@ -20,7 +22,8 @@ public class Product {
 	private double price;
 	private String imageId;
 
-	@ManyToMany(mappedBy = "products")
+	@ManyToMany
+	@JoinTable(name = "product_category", joinColumns = @JoinColumn(name = "product_id", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "category_id", referencedColumnName = "id"))
 	private List<Category> categories;
 	
 	@ManyToMany(mappedBy = "products")

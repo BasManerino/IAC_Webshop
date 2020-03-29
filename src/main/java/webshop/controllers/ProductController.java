@@ -12,6 +12,7 @@ import model.Product;
 import repositories.ProductRepository;
 import webshop.services.assemblers.ProductModelAssembler;
 import webshop.services.converters.Converter;
+import webshop.services.datacheckers.ProductDataChecker;
 import webshop.services.exceptions.RequestNotFoundException;
 import webshop.services.exceptions.UnableToUpdateException;
 
@@ -22,11 +23,13 @@ public class ProductController {
 	private final ProductRepository repository;
 	private final ProductModelAssembler assembler;
 	private final Converter converter;
+	private final ProductDataChecker dataChecker;
 
-	ProductController(ProductRepository repository, ProductModelAssembler assembler, Converter converter) {
+	ProductController(ProductRepository repository, ProductModelAssembler assembler, Converter converter, ProductDataChecker dataChecker) {
 		this.repository = repository;
 		this.assembler = assembler;
 		this.converter = converter;
+		this.dataChecker = dataChecker;
 	}
 
 	@GetMapping
@@ -48,20 +51,21 @@ public class ProductController {
 	@PostMapping
 	ResponseEntity<?> saveProduct(@RequestBody Product newProduct) {
 		try {
-			Product productToSave = newProduct;
+			Product productToSave = dataChecker.categoriesListChecker(newProduct);
 			productToSave.setId(null);
 			Product savedProduct = repository.save(productToSave);
-
+			
 			EntityModel<Product> entityModel = new EntityModel<>(savedProduct,
 					linkTo(methodOn(ProductController.class).getProduct(savedProduct.getId())).withSelfRel());
 
-			return ResponseEntity.created(new URI(entityModel.getRequiredLink(IanaLinkRelations.SELF).getHref()))
+			return ResponseEntity.created(new URI(entityModel.getRequiredLink(IanaLinkRelations.SELF).getHref())).header("Product Name", savedProduct.getName())
 					.body(entityModel);
 		} catch (URISyntaxException | RuntimeException e) {
-			return ResponseEntity.badRequest().body("Unable to create product: " + newProduct.getId());
+			System.out.print(e);
+			return ResponseEntity.badRequest().body("Unable to create product: " + newProduct.getId()+"\nPlease check the data");
 		}
 	}
-
+	
 	@SuppressWarnings("unused")
 	@PutMapping("/{id}")
 	ResponseEntity<?> updateProduct(@RequestBody Product newProduct, @PathVariable Long id) {

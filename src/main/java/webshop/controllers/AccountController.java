@@ -31,7 +31,6 @@ public class AccountController {
 
 	@GetMapping
 	public CollectionModel<EntityModel<Account>> getAllAccounts() {
-
 		Stream<Account> stream = converter.toStream(repository.findAll());
 		List<EntityModel<Account>> accounts = stream.map(assembler::toModel).collect(Collectors.toList());
 

@@ -28,13 +28,13 @@ insert into product (id, name, description, price, image_id) values (4, 'Shirt',
 insert into product (id, name, description, price, image_id) values (5, 'Jacket', 'Gray Jacket', 29.99, 'image');
 insert into product (id, name, description, price, image_id) values (6, 'Jacket', 'Brown Jacket', 30.99, 'image');
 
-insert into product_order (product_id, order_id) values (1,2);
-insert into product_order (product_id, order_id) values (2,2);
-insert into product_order (product_id, order_id) values (3,2);
-insert into product_order (product_id, order_id) values (4,2);
-insert into product_order (product_id, order_id) values (5,1);
-insert into product_order (product_id, order_id) values (6,1);
-insert into product_order (product_id, order_id) values (3,1);
+insert into order_product (product_id, order_id) values (1,2);
+insert into order_product (product_id, order_id) values (2,2);
+insert into order_product (product_id, order_id) values (3,2);
+insert into order_product (product_id, order_id) values (4,2);
+insert into order_product (product_id, order_id) values (5,1);
+insert into order_product (product_id, order_id) values (6,1);
+insert into order_product (product_id, order_id) values (3,1);
 
 insert into category (id, name, description, image_id) values (1, 'New', 'Gategory for the new products', 'No Image');
 insert into category (id, name, description, image_id) values (2, 'Clothes', 'Clothes Products', 'Image');
@@ -51,7 +51,7 @@ insert into discount (id, price, from_date, until_date, ad_text) values (1, 20, 
 insert into discount (id, price, from_date, until_date, ad_text) values (2, 15, '2020-01-18', '2020-3-13', 'discount ad text2');
 insert into discount (id, price, from_date, until_date, ad_text) values (3, 10, '2020-01-03', '2020-4-23', 'discount ad text3');
 
-insert into product_discount (product_id, discount_id) values (3, 1);
-insert into product_discount (product_id, discount_id) values (2, 1);
-insert into product_discount (product_id, discount_id) values (5, 2);
-insert into product_discount (product_id, discount_id) values (1, 3);
+insert into discount_product (product_id, discount_id) values (3, 1);
+insert into discount_product (product_id, discount_id) values (2, 1);
+insert into discount_product (product_id, discount_id) values (5, 2);
+insert into discount_product (product_id, discount_id) values (1, 3);
