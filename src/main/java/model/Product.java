@@ -1,7 +1,6 @@
 package model;
 
 import java.util.*;
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -21,13 +20,13 @@ public class Product {
 	private double price;
 	private String imageId;
 
-	@ManyToMany(mappedBy = "products", cascade = CascadeType.ALL)
+	@ManyToMany(mappedBy = "products")
 	private List<Category> categories;
 	
-	@ManyToMany(mappedBy = "products", cascade = CascadeType.ALL)
+	@ManyToMany(mappedBy = "products")
 	private List<Discount> discounts;
 	
-	@ManyToMany(mappedBy = "products", cascade = CascadeType.ALL)
+	@ManyToMany(mappedBy = "products")
 	private List<Order> orders;
 
 	public Product(String name, String description, double price, String imageId) {

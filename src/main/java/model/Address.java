@@ -1,7 +1,6 @@
 package model;
 
 import java.util.List;
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -24,7 +23,7 @@ public class Address {
 	private String postal_code;
 	private String country;
 
-	@OneToMany(mappedBy = "address", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@OneToMany(mappedBy = "address", fetch = FetchType.EAGER)
 	private List<Account> accounts;
 
 	public Address(String street, String house_number, String city, String state, String postal_code, String country) {

@@ -2,7 +2,6 @@ package model;
 
 import java.util.*;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -21,7 +20,7 @@ public class Role{
 	private String name;
 	private String description;
 
-	@OneToMany(mappedBy = "role", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@OneToMany(mappedBy = "role", fetch = FetchType.EAGER)
 	private List<Account> accounts;
 
 	public Role(String name, String description) {

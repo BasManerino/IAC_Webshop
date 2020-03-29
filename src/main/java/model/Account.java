@@ -1,7 +1,6 @@
 package model;
 
 import java.util.*;
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -35,7 +34,7 @@ public class Account{
 	@RestResource(path = "accountRole", rel = "role")
 	private Role role;
 
-	@OneToMany(mappedBy = "account", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@OneToMany(mappedBy = "account", fetch = FetchType.EAGER)
 	private List<Order> orders;
 
 	public Account(Date createdOn, String name, String phone, String email, Address address, Role role) {
