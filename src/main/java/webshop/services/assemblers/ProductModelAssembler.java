@@ -48,5 +48,4 @@ public class ProductModelAssembler implements RepresentationModelAssembler<Produ
 				linkTo(methodOn(ProductController.class).getAllProducts()).withRel("products")).add(categoriesLinksList)
 						.add(discountsLinksList).add(ordersLinksList);
 	}
-
 }

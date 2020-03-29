@@ -25,11 +25,10 @@ public class Category {
 	@JoinTable(name = "product_category", joinColumns = @JoinColumn(name = "category_id", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "product_id", referencedColumnName = "id"))
 	private List<Product> products;
 
-	public Category(String name, String description, String imageId, List<Product> products) {
+	public Category(String name, String description, String imageId) {
 		this.name = name;
 		this.description = description;
 		this.imageId = imageId;
-		this.products = products;
 	}
 	
 	public Category() {

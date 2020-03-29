@@ -37,7 +37,7 @@ public class Account{
 	@OneToMany(mappedBy = "account", fetch = FetchType.EAGER)
 	private List<Order> orders;
 
-	public Account(Date createdOn, String name, String phone, String email, Address address, Role role) {
+	public Account(Date createdOn, String name, String phone, String email) {
 		this.created_on = createdOn;
 		this.name = name;
 		this.phone = phone;

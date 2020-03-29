@@ -32,10 +32,9 @@ public class Order {
 	@JoinTable(name = "product_order", joinColumns = @JoinColumn(name = "order_id", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "product_id", referencedColumnName = "id"))
 	private List<Product> products;
 
-	public Order(Date date, double total_price, Account account) {
+	public Order(Date date, double total_price) {
 		this.date = date;
 		this.total_price = total_price;
-		this.account = account;
 	}
 
 	public Order() {
