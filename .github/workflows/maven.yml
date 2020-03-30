@@ -16,7 +16,9 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+    - name: Checks out repository
     - uses: actions/checkout@v2\
+    - name: Uploads artifact
     - uses: actions/upload-artifact@v1
       with:
         name: my-artifact
