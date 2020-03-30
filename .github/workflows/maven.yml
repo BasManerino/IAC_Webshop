@@ -6,18 +6,10 @@ name: Java CI with Maven
 on:
   push:
     branches: 
-    - master 
-    - develop
-    - release
-    - hotfix
-    - feature-github-action/*
+    - '*'
   pull_request:
     branches:
-    - master 
-    - develop
-    - release
-    - hotfix
-    - feature-github-action/*
+    - '*'
 jobs:
   build:
 
