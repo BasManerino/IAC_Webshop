@@ -9,14 +9,15 @@ on:
     - master 
     - develop
     - release
-    - hotfix/*
+    - hotfix
+    - feature-github-action/*
   pull_request:
     branches:
     - master 
     - develop
     - release
-    - hotfix/*
-
+    - hotfix
+    - feature-github-action/*
 jobs:
   build:
 
