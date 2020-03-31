@@ -57,7 +57,7 @@ public class DiscountController {
 	}
 
 	@PostMapping
-	ResponseEntity<?> saveCategory(@RequestBody Discount newDiscount) {
+	ResponseEntity<?> saveDiscount(@RequestBody Discount newDiscount) {
 		try {
 			Discount discountToSave = newDiscount;
 			discountToSave.setId(null);
@@ -96,7 +96,7 @@ public class DiscountController {
 	}
 
 	@DeleteMapping("/{id}")
-	ResponseEntity<?> deleteCategory(@PathVariable Long id) {
+	ResponseEntity<?> deleteDiscount(@PathVariable Long id) {
 		try {
 			repository.deleteById(id);
 

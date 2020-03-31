@@ -15,6 +15,7 @@ import model.Account;
 import model.Order;
 import webshop.controllers.AccountController;
 import webshop.controllers.AddressController;
+import webshop.controllers.CartController;
 import webshop.controllers.OrderController;
 import webshop.controllers.RoleController;
 
@@ -33,7 +34,8 @@ public class AccountModelAssembler implements RepresentationModelAssembler<Accou
 		return new EntityModel<>(account, linkTo(methodOn(AccountController.class).getAccount(account.getId())).withSelfRel(),
 				linkTo(methodOn(AccountController.class).getAllAccounts()).withRel("accounts"),
 				linkTo(methodOn(AddressController.class).getAddress(account.giveAddress().getId())).withRel("address"),
-				linkTo(methodOn(RoleController.class).getRole(account.giveRole().getId())).withRel("role")).add(linksList);
+				linkTo(methodOn(RoleController.class).getRole(account.giveRole().getId())).withRel("role"),
+				linkTo(methodOn(CartController.class).getCart(account.giveCart().getId())).withRel("cart")).add(linksList);
 	}
 	
 }

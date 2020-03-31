@@ -9,7 +9,6 @@ import org.springframework.hateoas.*;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import model.Category;
-import model.Product;
 import repositories.CategoryRepository;
 import webshop.services.assemblers.CategoryModelAssembler;
 import webshop.services.converters.Converter;

@@ -22,6 +22,7 @@ public class Product {
 	private String description;
 	private double normal_price;
 	private String discount_price;
+	private boolean available;
 	private String imageId;
 
 	@ManyToMany
@@ -29,16 +30,20 @@ public class Product {
 	private List<Category> categories;
 	
 	@ManyToMany(mappedBy = "products")
+	private List<Cart> carts;
+	
+	@ManyToMany(mappedBy = "products")
 	private List<Discount> discounts;
 	
 	@ManyToMany(mappedBy = "products")
 	private List<Order> orders;
 
-	public Product(String name, String description, double normal_price, String discount_price, String imageId) {
+	public Product(String name, String description, double normal_price, String discount_price, boolean available, String imageId) {
 		this.name = name;
 		this.description = description;
 		this.normal_price = normal_price;
 		this.discount_price = discount_price;
+		this.available = available;
 		this.imageId = imageId;
 	}
 
@@ -85,6 +90,14 @@ public class Product {
 		this.discount_price = discount_price;
 	}
 
+	public boolean isAvailable() {
+		return available;
+	}
+
+	public void setAvailable(boolean available) {
+		this.available = available;
+	}
+
 	public String getImageId() {
 		return imageId;
 	}
@@ -115,6 +128,14 @@ public class Product {
 
 	public void setCategories(List<Category> categories) {
 		this.categories = categories;
+	}
+
+	public List<Cart> giveCarts() {
+		return carts;
+	}
+
+	public void setCarts(List<Cart> carts) {
+		this.carts = carts;
 	}
 	
 }

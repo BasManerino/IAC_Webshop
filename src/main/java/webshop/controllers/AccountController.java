@@ -9,10 +9,13 @@ import org.springframework.hateoas.*;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import model.Account;
+import model.Cart;
 import repositories.AccountRepository;
+import repositories.CartRepository;
 import webshop.services.assemblers.AccountModelAssembler;
 import webshop.services.converters.Converter;
 import webshop.services.exceptions.RequestNotFoundException;
+import webshop.services.exceptions.UnableToDeleteException;
 import webshop.services.exceptions.UnableToUpdateException;
 
 @RestController
@@ -22,11 +25,13 @@ public class AccountController {
 	private final AccountRepository repository;
 	private final AccountModelAssembler assembler;
 	private final Converter converter;
+	private final CartRepository cartRepository;
 
-	AccountController(AccountRepository repository, AccountModelAssembler assembler, Converter converter) {
+	AccountController(AccountRepository repository, AccountModelAssembler assembler, Converter converter, CartRepository cartRepository) {
 		this.repository = repository;
 		this.assembler = assembler;
 		this.converter = converter;
+		this.cartRepository = cartRepository;
 	}
 
 	@GetMapping
@@ -47,10 +52,11 @@ public class AccountController {
 
 	@PostMapping
 	ResponseEntity<?> saveAccount(@RequestBody Account newAccount) {
-
 		try {
+			Cart savedCart = cartRepository.save(new Cart());
 			Account accountToSave = newAccount;
 			accountToSave.setId(null);
+			accountToSave.setCart(savedCart);
 			Account savedAccount = repository.save(accountToSave);
 
 			EntityModel<Account> entityModel = new EntityModel<>(savedAccount,
@@ -65,7 +71,7 @@ public class AccountController {
 
 	@SuppressWarnings("unused")
 	@PutMapping("/{id}")
-	ResponseEntity<?> updateEmployee(@RequestBody Account newAccount, @PathVariable long id) {
+	ResponseEntity<?> updateAccount(@RequestBody Account newAccount, @PathVariable long id) {
 
 		try {
 			// This made to prevent make a new account if there's no account with such id
@@ -88,7 +94,9 @@ public class AccountController {
 	@DeleteMapping("/{id}")
 	ResponseEntity<?> deleteAccount(@PathVariable Long id) {
 		try {
+			Account account = repository.findById(id).orElseThrow(() -> new UnableToDeleteException("account", id));
 			repository.deleteById(id);
+			cartRepository.delete(account.giveCart());
 
 			return ResponseEntity.ok("Account with id: " + id + " is deleted");
 		} catch (RuntimeException e) {

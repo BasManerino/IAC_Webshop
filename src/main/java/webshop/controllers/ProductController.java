@@ -97,7 +97,7 @@ public class ProductController {
 	}
 
 	@DeleteMapping("/{id}")
-	ResponseEntity<?> deleteOrder(@PathVariable Long id) {
+	ResponseEntity<?> deleteProduct(@PathVariable Long id) {
 		try {
 			repository.deleteById(id);
 

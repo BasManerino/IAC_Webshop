@@ -3,15 +3,21 @@ package webshop.services.dataCheckers;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-
 import org.springframework.stereotype.Component;
-
 import model.Category;
 import model.Discount;
 import model.Product;
+import repositories.ProductRepository;
+import webshop.services.exceptions.RequestNotFoundException;
 
 @Component
 public class ProductDataChecker {
+	
+	private final ProductRepository repository;
+	
+	ProductDataChecker(ProductRepository repository) {
+		this.repository = repository;
+	}
 
 	// Als het product aan geen category toegevoegd is, wordt die product in
 	// category 'New' toegevoegd
@@ -54,5 +60,25 @@ public class ProductDataChecker {
 		}
 
 		return product;
+	}
+	
+	public List<Product> availablityChecker(Iterable<Long> productsToCheck) {
+		List<Product> availableProducts = new ArrayList<Product>();
+		Iterable<Product> products = repository.findAllById(productsToCheck);
+		
+		for (Product product : products) {
+			System.out.print(product.getId());
+			if (product.isAvailable()) {
+				availableProducts.add(product);
+			}
+		}
+		
+		return availableProducts;
+	}
+	
+	public boolean availablityChecker(Long productId) {
+		Product product = repository.findById(productId).orElseThrow(() -> new RequestNotFoundException("product", productId));
+		
+		return product.isAvailable();
 	}
 }

@@ -9,6 +9,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import org.springframework.data.rest.core.annotation.RestResource;
 
@@ -36,14 +37,17 @@ public class Account{
 
 	@OneToMany(mappedBy = "account", fetch = FetchType.EAGER)
 	private List<Order> orders;
+	
+	@OneToOne
+	@JoinColumn(name = "cart_id")
+	@RestResource(path = "accountCart", rel = "cart")
+	private Cart cart;
 
 	public Account(Date createdOn, String name, String phone, String email) {
 		this.created_on = createdOn;
 		this.name = name;
 		this.phone = phone;
 		this.email = email;
-		this.address = address;
-		this.role = role;
 	}
 
 	public Account() {
@@ -111,6 +115,14 @@ public class Account{
 
 	public void setOrders(List<Order> orders) {
 		this.orders = orders;
+	}
+
+	public Cart giveCart() {
+		return cart;
+	}
+
+	public void setCart(Cart cart) {
+		this.cart = cart;
 	}
 
 }
