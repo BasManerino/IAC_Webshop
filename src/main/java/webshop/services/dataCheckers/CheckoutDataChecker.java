@@ -11,41 +11,42 @@ import model.Account;
 import model.Checkout;
 import model.Product;
 
-@Component
+@Component // Deze klasse is verantwoordelijk voor checks
 public class CheckoutDataChecker {
 
 	private final ProductDataChecker productChecker;
+	private final DiscountDataChecker discountChecker;
 	private final AccountDataChecker accountDataChecker;
 
-	CheckoutDataChecker(ProductDataChecker productChecker, AccountDataChecker accountDataChecker) {
+	CheckoutDataChecker(ProductDataChecker productChecker, AccountDataChecker accountDataChecker,
+			DiscountDataChecker discountChecker) {
 		this.productChecker = productChecker;
+		this.discountChecker = discountChecker;
 		this.accountDataChecker = accountDataChecker;
 	}
 
+	// Check alle gegevens van de checkout en relateerde products en account
+	// Return als string list met de foute gegevens
 	public List<String> checkoutChecker(Checkout checkout) {
 		List<String> errorsFound = new ArrayList<String>();
-		List<String> paymentMethods = new ArrayList<String>();
+		List<String> paymentMethods = new ArrayList<String>(); //Het lijst met alle payment methoden
 		paymentMethods.add("Cash");
 		paymentMethods.add("Creditcard");
 		paymentMethods.add("Visacard");
 		paymentMethods.add("iDeal");
 		paymentMethods.add("Paypal");
 		List<Product> productsToCheck = checkout.giveProducts();
-		boolean allProductsAvailable = productChecker.availablityCheckerListProducts(productsToCheck);
+		boolean allProductsAvailable = productChecker.availablityCheckerToBoolean(productsToCheck);
 		Account accountToCheck = checkout.giveAccount();
+		Long offerCode = checkout.getOffer_code();
 
 		if (!allProductsAvailable) {
 			errorsFound.add("Products");
-		}
-
-		Long offerCode = checkout.getOffer_code();
-		if (offerCode != null) {
-			if (!productChecker.checkProductsOfferCode(productsToCheck, offerCode)) {
+		} else if (offerCode != null) {
+			if (!discountChecker.checkProductsOfferCode(productsToCheck, offerCode)) {
 				errorsFound.add("OfferCode");
 			}
-		}
-
-		if (checkout.getPay_date() != null) {
+		} else if (checkout.getPay_date() != null) {
 			try {
 				DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
 				Date now = new Date();
@@ -59,19 +60,14 @@ public class CheckoutDataChecker {
 				errorsFound.add("PaymentDate");
 				e.printStackTrace();
 			}
-		} else {
+		} else if (checkout.getPay_date() == null) {
 			errorsFound.add("PaymentDate");
-		}
-
-		if (!paymentMethods.contains(checkout.getPay_method())) {
+		} else if (!paymentMethods.contains(checkout.getPay_method())) {
 			errorsFound.add("PaymentMethod");
-		}
-
-		if (accountToCheck == null || !accountDataChecker.accountChecker(accountToCheck)) {
+		} else if (accountToCheck == null || !accountDataChecker.findAccountAndCheck(accountToCheck)) {
 			errorsFound.add("Account details");
 		}
 
 		return errorsFound;
 	}
-
 }

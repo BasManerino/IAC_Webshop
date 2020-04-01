@@ -17,16 +17,18 @@ import webshop.controllers.ProductController;
 @Component
 public class CheckoutModelAssembler implements RepresentationModelAssembler<Checkout, EntityModel<Checkout>> {
 
-	@Override
+	@Override // Het aanmaken van een EntityMode met links naar relaties
 	public EntityModel<Checkout> toModel(Checkout checkout) {
-		List<Product> products = checkout.giveProducts();
-		List<Link> linksList = new ArrayList<Link>();
-		for (Product product : products) {
+		List<Product> products = checkout.giveProducts();// Get alle products van de checkout
+		List<Link> linksList = new ArrayList<Link>();// list te invullen met links naar products
+		for (Product product : products) {// Links aanmaken voor products en toevoegen aan de lijst
 			Link link = linkTo(methodOn(ProductController.class).getProduct(product.getId())).withRel("products");
 			linksList.add(link);
 		}
 
-		return new EntityModel<>(checkout, linkTo(methodOn(CheckoutController.class).getCheckout(checkout.getId())).withSelfRel(),
+		// Return met links naar checkouts, self checkout, account en products
+		return new EntityModel<>(checkout,
+				linkTo(methodOn(CheckoutController.class).getCheckout(checkout.getId())).withSelfRel(),
 				linkTo(methodOn(CheckoutController.class).getAllCheckouts()).withRel("checkouts"),
 				linkTo(methodOn(AccountController.class).getAccount(checkout.giveAccount().getId())).withRel("account"))
 						.add(linksList);

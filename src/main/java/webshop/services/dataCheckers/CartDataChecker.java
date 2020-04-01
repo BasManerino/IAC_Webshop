@@ -1,12 +1,11 @@
 package webshop.services.dataCheckers;
 
-import java.util.ArrayList;
 import java.util.List;
 import org.springframework.stereotype.Component;
 import model.Cart;
 import model.Product;
 
-@Component
+@Component // Deze klasse is verantwoordelijk voor checks
 public class CartDataChecker {
 	private final ProductDataChecker productChecker;
 
@@ -14,21 +13,16 @@ public class CartDataChecker {
 		this.productChecker = productChecker;
 	}
 
+	// Check de beschikbaarheid van alle producten van de cart
 	public Cart checkProductsAvailablity(Cart cart) {
-		List<Product> products = (ArrayList<Product>) cart.giveProducts();
-		List<Long> productsToCheck = new ArrayList<Long>();
-
-		for (Product product : products) {
-			productsToCheck.add(product.getId());
-		}
-
-		products = productChecker.availablityCheckerListIds(productsToCheck);
+		List<Product> products = productChecker.availablityCheckerToList(cart.giveProducts());
 
 		cart.setProducts(products);
 
 		return cart;
 	}
-	
+
+	// Check de beschikbaarheid van een product
 	public boolean checkProductAvailablity(Long productId) {
 		return productChecker.availablityCheckerProductId(productId);
 	}
