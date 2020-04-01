@@ -2,7 +2,6 @@ package model;
 
 import java.util.*;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -35,8 +34,11 @@ public class Account{
 	@RestResource(path = "accountRole", rel = "role")
 	private Role role;
 
-	@OneToMany(mappedBy = "account", fetch = FetchType.EAGER)
+	@OneToMany(mappedBy = "account")
 	private List<Order> orders;
+	
+	@OneToMany(mappedBy = "account")
+	private List<Checkout> checkouts;
 	
 	@OneToOne
 	@JoinColumn(name = "cart_id")
@@ -115,6 +117,14 @@ public class Account{
 
 	public void setOrders(List<Order> orders) {
 		this.orders = orders;
+	}
+
+	public List<Checkout> giveCheckouts() {
+		return checkouts;
+	}
+
+	public void setCheckouts(List<Checkout> checkouts) {
+		this.checkouts = checkouts;
 	}
 
 	public Cart giveCart() {

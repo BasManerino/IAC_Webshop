@@ -37,6 +37,9 @@ public class Product {
 	
 	@ManyToMany(mappedBy = "products")
 	private List<Order> orders;
+	
+	@ManyToMany(mappedBy = "products")
+	private List<Order> checkouts;
 
 	public Product(String name, String description, double normal_price, String discount_price, boolean available, String imageId) {
 		this.name = name;
@@ -136,6 +139,14 @@ public class Product {
 
 	public void setCarts(List<Cart> carts) {
 		this.carts = carts;
+	}
+
+	public List<Order> giveCheckouts() {
+		return checkouts;
+	}
+
+	public void setCheckouts(List<Order> checkouts) {
+		this.checkouts = checkouts;
 	}
 	
 }

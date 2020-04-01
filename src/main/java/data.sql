@@ -73,3 +73,7 @@ insert into cart_product (product_id, cart_id) values (6,1);
 insert into cart_product (product_id, cart_id) values (1,1);
 insert into cart_product (product_id, cart_id) values (2,3);
 insert into cart_product (product_id, cart_id) values (3,3);
+
+insert into checkout (id, pay_method, offer_code, pay_date, account_id) values (1, 'iDeal', 1, '2020-02-05', 1);
+
+insert into checkout_product (product_id, checkout_id) values (1, 1);

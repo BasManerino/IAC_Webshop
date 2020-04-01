@@ -14,9 +14,11 @@ import webshop.services.exceptions.RequestNotFoundException;
 public class ProductDataChecker {
 	
 	private final ProductRepository repository;
+	private final DiscountDataChecker discountDataChecker;
 	
-	ProductDataChecker(ProductRepository repository) {
+	ProductDataChecker(ProductRepository repository, DiscountDataChecker discountDataChecker) {
 		this.repository = repository;
+		this.discountDataChecker = discountDataChecker;
 	}
 
 	// Als het product aan geen category toegevoegd is, wordt die product in
@@ -62,7 +64,7 @@ public class ProductDataChecker {
 		return product;
 	}
 	
-	public List<Product> availablityChecker(Iterable<Long> productsToCheck) {
+	public List<Product> availablityCheckerListIds(Iterable<Long> productsToCheck) {
 		List<Product> availableProducts = new ArrayList<Product>();
 		Iterable<Product> products = repository.findAllById(productsToCheck);
 		
@@ -76,9 +78,54 @@ public class ProductDataChecker {
 		return availableProducts;
 	}
 	
-	public boolean availablityChecker(Long productId) {
-		Product product = repository.findById(productId).orElseThrow(() -> new RequestNotFoundException("product", productId));
+	public boolean availablityCheckerListProducts(Iterable<Product> productsToCheck) {
+		List<Long> productsIds = new ArrayList<Long>();
+
+		for (Product product : productsToCheck) {
+			productsIds.add(product.getId());
+		}
 		
-		return product.isAvailable();
+		Iterable<Product> products = repository.findAllById(productsIds);
+		
+		for (Product product : products) {
+			if (!product.isAvailable()) {
+				return false;
+			}
+		}
+		
+		return true;
+	}
+	
+	public boolean availablityCheckerProductId(Long productId) {
+		try {
+			Product product = repository.findById(productId).orElseThrow(() -> new RequestNotFoundException("product", productId));
+			
+			return product.isAvailable();
+		} catch (RuntimeException e) {
+			return false;
+		}
+	}
+	
+	public boolean checkProductsOfferCode(Iterable<Product> productsToCheck, Long offerCode) {
+		Discount discountToCheck = new Discount();
+		discountToCheck.setId(offerCode);
+		List<Long> productsIds = new ArrayList<Long>();
+
+		for (Product product : productsToCheck) {
+			productsIds.add(product.getId());
+		}
+		
+		Iterable<Product> products = repository.findAllById(productsIds);
+		
+		for (Product product : products) {
+			List <Discount> discounts = product.giveDiscounts();
+			for (Discount discount : discounts) {
+				if (discount.getId() == offerCode) {
+					return discountDataChecker.discountChecker(discountToCheck);
+				}
+			}
+		}
+		
+		return false;
 	}
 }

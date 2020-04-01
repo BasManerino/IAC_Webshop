@@ -19,11 +19,10 @@ public class CartDataChecker {
 		List<Long> productsToCheck = new ArrayList<Long>();
 
 		for (Product product : products) {
-			System.out.print(product.getId());
 			productsToCheck.add(product.getId());
 		}
 
-		products = productChecker.availablityChecker(productsToCheck);
+		products = productChecker.availablityCheckerListIds(productsToCheck);
 
 		cart.setProducts(products);
 
@@ -31,6 +30,6 @@ public class CartDataChecker {
 	}
 	
 	public boolean checkProductAvailablity(Long productId) {
-		return productChecker.availablityChecker(productId);
+		return productChecker.availablityCheckerProductId(productId);
 	}
 }
