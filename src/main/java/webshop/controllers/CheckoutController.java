@@ -9,10 +9,10 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import model.*;
 import repositories.CheckoutRepository;
-import webshop.services.assemblers.CheckoutModelAssembler;
-import webshop.services.converters.Converter;
-import webshop.services.dataCheckers.CheckoutDataChecker;
-import webshop.services.exceptions.*;
+import webshop.tools.assemblers.CheckoutModelAssembler;
+import webshop.tools.converters.Converter;
+import webshop.tools.datacheckers.CheckoutDataChecker;
+import webshop.tools.exceptions.*;
 
 @RestController // Het maken van CheckoutController REST controller
 //De path moet met /Checkout beginnen om die controller te kunnen gebruiken
@@ -91,7 +91,7 @@ public class CheckoutController {
 		try {
 			// Om te voorkomen dat er een nieuwe checkout gemaakt te worden als die checkout
 			// niet bestaat
-			Checkout checkouTest = repository.findById(id)
+			Checkout checkoutTest = repository.findById(id)
 					.orElseThrow(() -> new UnableToUpdateException("checkout", id));
 			List<String> checkErrors = dataChecker.checkoutChecker(newCheckout); // Check checkout gegevens
 			if (checkErrors.isEmpty()) {// Als de errorslijst leeg is, dan zijn alle gegevens klopt

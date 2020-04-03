@@ -38,9 +38,6 @@ public class Product {
 	@ManyToMany(mappedBy = "products")
 	private List<Order> orders; // Many_to_many relatie met order, de koppeltable is order_product
 
-	@ManyToMany(mappedBy = "products")
-	private List<Order> checkouts; // Many_to_many relatie met checkout, de koppeltable is checkout_product
-
 	public Product(String name, String description, double normal_price, String discount_price, boolean available,
 			String imageId) {
 		this.name = name;
@@ -147,16 +144,6 @@ public class Product {
 
 	public void setCarts(List<Cart> carts) {
 		this.carts = carts;
-	}
-
-	// Er wordt give i.p.v get gebruikt om geen data van checkouts direct te
-	// weergeven
-	public List<Order> giveCheckouts() {
-		return checkouts;
-	}
-
-	public void setCheckouts(List<Order> checkouts) {
-		this.checkouts = checkouts;
 	}
 
 }

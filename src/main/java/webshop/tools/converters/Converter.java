@@ -1,4 +1,4 @@
-package webshop.services.converters;
+package webshop.tools.converters;
 
 import java.util.stream.Stream;
 import java.util.stream.StreamSupport;

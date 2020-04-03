@@ -9,10 +9,10 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import model.Product;
 import repositories.ProductRepository;
-import webshop.services.assemblers.ProductModelAssembler;
-import webshop.services.converters.Converter;
-import webshop.services.dataCheckers.ProductDataChecker;
-import webshop.services.exceptions.*;
+import webshop.tools.assemblers.ProductModelAssembler;
+import webshop.tools.converters.Converter;
+import webshop.tools.datacheckers.ProductDataChecker;
+import webshop.tools.exceptions.*;
 
 @RestController // Het maken van ProductController REST controller
 //De path moet met /Product beginnen om die controller te kunnen gebruiken

@@ -1,4 +1,4 @@
-package webshop.services.dataCheckers;
+package webshop.tools.datacheckers;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -8,7 +8,7 @@ import model.Category;
 import model.Discount;
 import model.Product;
 import repositories.ProductRepository;
-import webshop.services.exceptions.RequestNotFoundException;
+import webshop.tools.exceptions.RequestNotFoundException;
 
 @Component // Deze klasse is verantwoordelijk voor checks
 public class ProductDataChecker {

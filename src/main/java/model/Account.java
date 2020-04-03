@@ -37,9 +37,6 @@ public class Account {
 	@OneToMany(mappedBy = "account")
 	private List<Order> orders; // One_to_many relatie met order, account_id is de FK in order
 
-	@OneToMany(mappedBy = "account")
-	private List<Checkout> checkouts; // One_to_many relatie met checkout, account_id is de FK in checkout
-
 	@OneToOne
 	@JoinColumn(name = "cart_id")
 	@RestResource(path = "accountCart", rel = "cart")
@@ -121,15 +118,6 @@ public class Account {
 
 	public void setOrders(List<Order> orders) {
 		this.orders = orders;
-	}
-
-	//Er wordt give i.p.v get gebruikt om geen data van checkouts direct te weergeven
-	public List<Checkout> giveCheckouts() {
-		return checkouts;
-	}
-
-	public void setCheckouts(List<Checkout> checkouts) {
-		this.checkouts = checkouts;
 	}
 
 	//Er wordt give i.p.v get gebruikt om geen data van cart direct te weergeven

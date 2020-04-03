@@ -1,4 +1,4 @@
-package webshop.services.exceptions;
+package webshop.tools.exceptions;
 
 @SuppressWarnings("serial")
 public class UnableToSaveException extends RuntimeException {

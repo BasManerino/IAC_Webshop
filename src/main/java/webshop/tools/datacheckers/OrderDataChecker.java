@@ -1,13 +1,13 @@
-package webshop.services.dataCheckers;
+package webshop.tools.datacheckers;
 
 import java.util.List;
 import org.springframework.stereotype.Component;
 import model.Order;
 import model.Product;
 import repositories.OrderRepository;
-import webshop.services.exceptions.RequestNotFoundException;
+import webshop.tools.exceptions.RequestNotFoundException;
 
-@Component// Deze klasse is verantwoordelijk voor checks
+@Component // Deze klasse is verantwoordelijk voor checks
 public class OrderDataChecker {
 
 	private final OrderRepository repository;
@@ -31,6 +31,9 @@ public class OrderDataChecker {
 		} else if (orderToCheck.giveAccount().equals(null)
 				|| !accountDataChecker.findAccountAndCheck(orderToCheck.giveAccount())) {
 			return false;
+		} else if (orderToCheck.giveProducts() == null
+				|| !productDataChecker.availablityCheckerToBoolean(orderToCheck.giveProducts())) {
+			return false;
 		} else
 			return true;
 	}
@@ -42,6 +45,16 @@ public class OrderDataChecker {
 			return orderChecker(orderToCheck);
 		} catch (RuntimeException e) {
 			return false;
+		}
+	}
+	
+	public Order findOrder(Order orderToFind) {
+		try {
+			Long id = orderToFind.getId();
+			Order order = repository.findById(id).orElseThrow(() -> new RequestNotFoundException("order", id));
+			return order;
+		} catch (RuntimeException e) {
+			return null;
 		}
 	}
 

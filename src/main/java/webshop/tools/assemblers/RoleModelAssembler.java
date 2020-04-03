@@ -1,4 +1,4 @@
-package webshop.services.assemblers;
+package webshop.tools.assemblers;
 
 import org.springframework.hateoas.EntityModel;
 import org.springframework.hateoas.Link;

@@ -9,10 +9,10 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import model.Category;
 import repositories.CategoryRepository;
-import webshop.services.assemblers.CategoryModelAssembler;
-import webshop.services.converters.Converter;
-import webshop.services.dataCheckers.CategoryDataChecker;
-import webshop.services.exceptions.*;
+import webshop.tools.assemblers.CategoryModelAssembler;
+import webshop.tools.converters.Converter;
+import webshop.tools.datacheckers.CategoryDataChecker;
+import webshop.tools.exceptions.*;
 
 @RestController // Het maken van CategoryController REST controller
 //De path moet met /Category beginnen om die controller te kunnen gebruiken

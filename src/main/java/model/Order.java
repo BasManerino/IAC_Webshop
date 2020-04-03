@@ -9,6 +9,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import org.springframework.data.rest.core.annotation.RestResource;
@@ -31,6 +32,9 @@ public class Order {
 	@ManyToMany
 	@JoinTable(name = "order_product", joinColumns = @JoinColumn(name = "order_id", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "product_id", referencedColumnName = "id"))
 	private List<Product> products; //Many_to_many relatie met product, de koppeltable is order_product
+	
+	@OneToOne(mappedBy = "order")
+	private Checkout checkout; // One-to-one relatie met checkout, order_id is de FK by checkout
 
 	public Order(Date date, double total_price) {
 		this.date = date;
@@ -82,4 +86,13 @@ public class Order {
 	public void setProducts(List<Product> products) {
 		this.products = products;
 	}
+
+	public Checkout giveCheckout() {
+		return checkout;
+	}
+
+	public void setCheckout(Checkout checkout) {
+		this.checkout = checkout;
+	}
+	
 }

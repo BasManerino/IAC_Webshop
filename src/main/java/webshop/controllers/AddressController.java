@@ -9,10 +9,10 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import model.Address;
 import repositories.AddressRepository;
-import webshop.services.assemblers.AddressModelAssembler;
-import webshop.services.converters.Converter;
-import webshop.services.dataCheckers.AddressDataChecker;
-import webshop.services.exceptions.*;
+import webshop.tools.assemblers.AddressModelAssembler;
+import webshop.tools.converters.Converter;
+import webshop.tools.datacheckers.AddressDataChecker;
+import webshop.tools.exceptions.*;
 
 @RestController // Het maken van AddressController REST controller
 //De path moet met /Address beginnen om die controller te kunnen gebruiken

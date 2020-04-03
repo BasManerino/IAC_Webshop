@@ -1,4 +1,4 @@
-package webshop.services.dataCheckers;
+package webshop.tools.datacheckers;
 
 import java.util.List;
 import org.springframework.stereotype.Component;

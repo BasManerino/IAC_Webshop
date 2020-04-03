@@ -10,10 +10,10 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import model.Discount;
 import repositories.DiscountRepository;
-import webshop.services.assemblers.DiscountModelAssembler;
-import webshop.services.converters.Converter;
-import webshop.services.dataCheckers.DiscountDataChecker;
-import webshop.services.exceptions.*;
+import webshop.tools.assemblers.DiscountModelAssembler;
+import webshop.tools.converters.Converter;
+import webshop.tools.datacheckers.DiscountDataChecker;
+import webshop.tools.exceptions.*;
 
 @RestController // Het maken van DiscountController REST controller
 //De path moet met /Discount beginnen om die controller te kunnen gebruiken

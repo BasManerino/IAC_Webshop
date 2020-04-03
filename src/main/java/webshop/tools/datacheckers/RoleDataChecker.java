@@ -1,10 +1,10 @@
-package webshop.services.dataCheckers;
+package webshop.tools.datacheckers;
 
 import org.springframework.stereotype.Component;
 
 import model.Role;
 import repositories.RoleRepository;
-import webshop.services.exceptions.RequestNotFoundException;
+import webshop.tools.exceptions.RequestNotFoundException;
 
 @Component // Deze klasse is verantwoordelijk voor checks
 public class RoleDataChecker {

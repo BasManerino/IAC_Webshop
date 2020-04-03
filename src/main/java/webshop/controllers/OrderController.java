@@ -9,10 +9,10 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import model.Order;
 import repositories.OrderRepository;
-import webshop.services.assemblers.OrderModelAssembler;
-import webshop.services.converters.Converter;
-import webshop.services.dataCheckers.OrderDataChecker;
-import webshop.services.exceptions.*;
+import webshop.tools.assemblers.OrderModelAssembler;
+import webshop.tools.converters.Converter;
+import webshop.tools.datacheckers.OrderDataChecker;
+import webshop.tools.exceptions.*;
 
 @RestController // Het maken van OrderController REST controller
 //De path moet met /Order beginnen om die controller te kunnen gebruiken

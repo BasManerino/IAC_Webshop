@@ -10,10 +10,10 @@ import org.springframework.web.bind.annotation.*;
 import model.*;
 import repositories.AccountRepository;
 import repositories.CartRepository;
-import webshop.services.assemblers.AccountModelAssembler;
-import webshop.services.converters.Converter;
-import webshop.services.dataCheckers.AccountDataChecker;
-import webshop.services.exceptions.*;
+import webshop.tools.assemblers.AccountModelAssembler;
+import webshop.tools.converters.Converter;
+import webshop.tools.datacheckers.AccountDataChecker;
+import webshop.tools.exceptions.*;
 
 @RestController // Het maken van AccountController REST controller
 //De path moet met /Account beginnen om die controller te kunnen gebruiken

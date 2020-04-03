@@ -1,5 +1,5 @@
 insert into role (id, name, description) values (1, 'admin', 'Administrator');
-insert into role (id, name, description) values (2, 'guest', 'Guest');
+insert into role (id, name, description) values (2, 'empl', 'Employee');
 insert into role (id, name, description) values (3, 'guest', 'Guest');
 
 insert into address (id, street, house_number, city, state, postal_code, country) values (1, 'street', 1, 'city', 'state', '3152NJ', 'country');
@@ -23,11 +23,9 @@ insert into account (id, created_on, name, phone, email, address_id, role_id, ca
 insert into account (id, created_on, name, phone, email, address_id, role_id, cart_id) values (6, '2020-04-02', 'Mira', '+3167895876', 'email6@gmail.com', 2, 3, 6);
 insert into account (id, created_on, name, phone, email, address_id, role_id, cart_id) values (7, '2020-04-03', 'Rik', '+3165223876', 'email7@gmail.com', 3, 3, 7);
 
-insert into order_table (id, date, total_price, account_id) values (1, '2020-03-21', 12.3, 1);
-insert into order_table (id, date, total_price, account_id) values (2, '2020-03-22', 13.3, 1);
+insert into order_table (id, date, total_price, account_id) values (1, '2020-03-21', 88.97, 1);
+insert into order_table (id, date, total_price, account_id) values (2, '2020-03-22', 109.96, 1);
 insert into order_table (id, date, total_price, account_id) values (3, '2020-03-23', 14.3, 1);
-insert into order_table (id, date, total_price, account_id) values (4, '2020-03-24', 15.3, 2);
-insert into order_table (id, date, total_price, account_id) values (5, '2020-03-25', 16.3, 2);
 
 insert into product (id, name, description, normal_price, discount_price, available, image_id) values (1, 'Shoes', 'Black Shoes', 25.99, 'Geen', true, 'image');
 insert into product (id, name, description, normal_price, discount_price, available, image_id) values (2, 'Shoes', 'Red Shoes', 26.99, 'Geen', true,'image');
@@ -43,6 +41,8 @@ insert into order_product (product_id, order_id) values (4,2);
 insert into order_product (product_id, order_id) values (5,1);
 insert into order_product (product_id, order_id) values (6,1);
 insert into order_product (product_id, order_id) values (3,1);
+insert into order_product (product_id, order_id) values (1,3);
+insert into order_product (product_id, order_id) values (2,3);
 
 insert into category (id, name, description, image_id) values (1, 'New', 'Gategory for the new products', 'No Image');
 insert into category (id, name, description, image_id) values (2, 'Clothes', 'Clothes Products', 'Image');
@@ -74,6 +74,5 @@ insert into cart_product (product_id, cart_id) values (1,1);
 insert into cart_product (product_id, cart_id) values (2,3);
 insert into cart_product (product_id, cart_id) values (3,3);
 
-insert into checkout (id, pay_method, offer_code, pay_date, account_id) values (1, 'iDeal', 1, '2020-02-05', 1);
-
-insert into checkout_product (product_id, checkout_id) values (1, 1);
+insert into checkout (id, pay_method, offer_code, pay_date, order_id) values (1, 'iDeal', 1, '2020-02-05', 1);
+insert into checkout (id, pay_method, offer_code, pay_date, order_id) values (2, 'Creditcard', 2, '2020-03-03', 2);

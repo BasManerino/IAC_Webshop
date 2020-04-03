@@ -1,4 +1,4 @@
-package webshop.services.dataCheckers;
+package webshop.tools.datacheckers;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -10,7 +10,7 @@ import model.Discount;
 import model.Product;
 import repositories.DiscountRepository;
 import repositories.ProductRepository;
-import webshop.services.exceptions.RequestNotFoundException;
+import webshop.tools.exceptions.RequestNotFoundException;
 
 @Component // Deze klasse is verantwoordelijk voor checks
 public class DiscountDataChecker {

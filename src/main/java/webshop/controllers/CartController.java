@@ -9,10 +9,10 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import model.*;
 import repositories.CartRepository;
-import webshop.services.assemblers.CartModelAssembler;
-import webshop.services.converters.Converter;
-import webshop.services.dataCheckers.CartDataChecker;
-import webshop.services.exceptions.*;
+import webshop.tools.assemblers.CartModelAssembler;
+import webshop.tools.converters.Converter;
+import webshop.tools.datacheckers.CartDataChecker;
+import webshop.tools.exceptions.*;
 
 @RestController // Het maken van CartController REST controller
 //De path moet met /Cart beginnen om die controller te kunnen gebruiken

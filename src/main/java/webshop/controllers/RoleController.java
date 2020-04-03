@@ -9,10 +9,10 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import model.Role;
 import repositories.RoleRepository;
-import webshop.services.assemblers.RoleModelAssembler;
-import webshop.services.converters.Converter;
-import webshop.services.dataCheckers.RoleDataChecker;
-import webshop.services.exceptions.*;
+import webshop.tools.assemblers.RoleModelAssembler;
+import webshop.tools.converters.Converter;
+import webshop.tools.datacheckers.RoleDataChecker;
+import webshop.tools.exceptions.*;
 
 @RestController // Het maken van RoleController REST controller
 //De path moet met /Role beginnen om die controller te kunnen gebruiken

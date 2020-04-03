@@ -1,4 +1,4 @@
-package webshop.services.exceptions;
+package webshop.tools.exceptions;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ControllerAdvice;
