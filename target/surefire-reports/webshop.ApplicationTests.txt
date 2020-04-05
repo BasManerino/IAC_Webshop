@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: webshop.ApplicationTests
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 9.459 s - in webshop.ApplicationTests
+Tests run: 65, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 6.174 s - in webshop.ApplicationTests

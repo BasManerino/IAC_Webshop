@@ -1,52 +1,52 @@
-D:\Portfolio ICT\Portfolio ICT\Tweede jaar\Blok 3\Integration and Communication\Opdrachten\WebShop\IAC_Webshop\src\main\java\repositories\AccountRepository.java
-D:\Portfolio ICT\Portfolio ICT\Tweede jaar\Blok 3\Integration and Communication\Opdrachten\WebShop\IAC_Webshop\src\main\java\webshop\services\assemblers\CartModelAssembler.java
-D:\Portfolio ICT\Portfolio ICT\Tweede jaar\Blok 3\Integration and Communication\Opdrachten\WebShop\IAC_Webshop\src\main\java\webshop\services\exceptions\RequestNotFoundException.java
-D:\Portfolio ICT\Portfolio ICT\Tweede jaar\Blok 3\Integration and Communication\Opdrachten\WebShop\IAC_Webshop\src\main\java\webshop\controllers\CheckoutController.java
-D:\Portfolio ICT\Portfolio ICT\Tweede jaar\Blok 3\Integration and Communication\Opdrachten\WebShop\IAC_Webshop\src\main\java\model\Address.java
-D:\Portfolio ICT\Portfolio ICT\Tweede jaar\Blok 3\Integration and Communication\Opdrachten\WebShop\IAC_Webshop\src\main\java\model\Role.java
-D:\Portfolio ICT\Portfolio ICT\Tweede jaar\Blok 3\Integration and Communication\Opdrachten\WebShop\IAC_Webshop\src\main\java\webshop\services\dataCheckers\ProductDataChecker.java
-D:\Portfolio ICT\Portfolio ICT\Tweede jaar\Blok 3\Integration and Communication\Opdrachten\WebShop\IAC_Webshop\src\main\java\webshop\controllers\CategoryController.java
-D:\Portfolio ICT\Portfolio ICT\Tweede jaar\Blok 3\Integration and Communication\Opdrachten\WebShop\IAC_Webshop\src\main\java\repositories\AddressRepository.java
-D:\Portfolio ICT\Portfolio ICT\Tweede jaar\Blok 3\Integration and Communication\Opdrachten\WebShop\IAC_Webshop\src\main\java\model\Cart.java
-D:\Portfolio ICT\Portfolio ICT\Tweede jaar\Blok 3\Integration and Communication\Opdrachten\WebShop\IAC_Webshop\src\main\java\webshop\controllers\AccountController.java
-D:\Portfolio ICT\Portfolio ICT\Tweede jaar\Blok 3\Integration and Communication\Opdrachten\WebShop\IAC_Webshop\src\main\java\model\Category.java
-D:\Portfolio ICT\Portfolio ICT\Tweede jaar\Blok 3\Integration and Communication\Opdrachten\WebShop\IAC_Webshop\src\main\java\webshop\controllers\AddressController.java
-D:\Portfolio ICT\Portfolio ICT\Tweede jaar\Blok 3\Integration and Communication\Opdrachten\WebShop\IAC_Webshop\src\main\java\repositories\OrderRepository.java
-D:\Portfolio ICT\Portfolio ICT\Tweede jaar\Blok 3\Integration and Communication\Opdrachten\WebShop\IAC_Webshop\src\main\java\repositories\CheckoutRepository.java
-D:\Portfolio ICT\Portfolio ICT\Tweede jaar\Blok 3\Integration and Communication\Opdrachten\WebShop\IAC_Webshop\src\main\java\webshop\services\assemblers\CategoryModelAssembler.java
-D:\Portfolio ICT\Portfolio ICT\Tweede jaar\Blok 3\Integration and Communication\Opdrachten\WebShop\IAC_Webshop\src\main\java\repositories\CartRepository.java
-D:\Portfolio ICT\Portfolio ICT\Tweede jaar\Blok 3\Integration and Communication\Opdrachten\WebShop\IAC_Webshop\src\main\java\webshop\services\dataCheckers\CheckoutDataChecker.java
-D:\Portfolio ICT\Portfolio ICT\Tweede jaar\Blok 3\Integration and Communication\Opdrachten\WebShop\IAC_Webshop\src\main\java\webshop\services\assemblers\AddressModelAssembler.java
-D:\Portfolio ICT\Portfolio ICT\Tweede jaar\Blok 3\Integration and Communication\Opdrachten\WebShop\IAC_Webshop\src\main\java\webshop\services\exceptions\UnableToSaveException.java
-D:\Portfolio ICT\Portfolio ICT\Tweede jaar\Blok 3\Integration and Communication\Opdrachten\WebShop\IAC_Webshop\src\main\java\repositories\RoleRepository.java
-D:\Portfolio ICT\Portfolio ICT\Tweede jaar\Blok 3\Integration and Communication\Opdrachten\WebShop\IAC_Webshop\src\main\java\webshop\services\assemblers\OrderModelAssembler.java
-D:\Portfolio ICT\Portfolio ICT\Tweede jaar\Blok 3\Integration and Communication\Opdrachten\WebShop\IAC_Webshop\src\main\java\webshop\controllers\CartController.java
-D:\Portfolio ICT\Portfolio ICT\Tweede jaar\Blok 3\Integration and Communication\Opdrachten\WebShop\IAC_Webshop\src\main\java\webshop\controllers\DiscountController.java
-D:\Portfolio ICT\Portfolio ICT\Tweede jaar\Blok 3\Integration and Communication\Opdrachten\WebShop\IAC_Webshop\src\main\java\webshop\controllers\OrderController.java
-D:\Portfolio ICT\Portfolio ICT\Tweede jaar\Blok 3\Integration and Communication\Opdrachten\WebShop\IAC_Webshop\src\main\java\webshop\services\exceptions\NotFoundAdvice.java
-D:\Portfolio ICT\Portfolio ICT\Tweede jaar\Blok 3\Integration and Communication\Opdrachten\WebShop\IAC_Webshop\src\main\java\webshop\services\dataCheckers\AccountDataChecker.java
-D:\Portfolio ICT\Portfolio ICT\Tweede jaar\Blok 3\Integration and Communication\Opdrachten\WebShop\IAC_Webshop\src\main\java\webshop\services\exceptions\UnableToDeleteException.java
-D:\Portfolio ICT\Portfolio ICT\Tweede jaar\Blok 3\Integration and Communication\Opdrachten\WebShop\IAC_Webshop\src\main\java\webshop\services\exceptions\UnableToUpdateException.java
-D:\Portfolio ICT\Portfolio ICT\Tweede jaar\Blok 3\Integration and Communication\Opdrachten\WebShop\IAC_Webshop\src\main\java\webshop\services\dataCheckers\CartDataChecker.java
-D:\Portfolio ICT\Portfolio ICT\Tweede jaar\Blok 3\Integration and Communication\Opdrachten\WebShop\IAC_Webshop\src\main\java\model\Order.java
-D:\Portfolio ICT\Portfolio ICT\Tweede jaar\Blok 3\Integration and Communication\Opdrachten\WebShop\IAC_Webshop\src\main\java\repositories\DiscountRepository.java
-D:\Portfolio ICT\Portfolio ICT\Tweede jaar\Blok 3\Integration and Communication\Opdrachten\WebShop\IAC_Webshop\src\main\java\webshop\services\assemblers\DiscountModelAssembler.java
-D:\Portfolio ICT\Portfolio ICT\Tweede jaar\Blok 3\Integration and Communication\Opdrachten\WebShop\IAC_Webshop\src\main\java\webshop\services\dataCheckers\AddressDataChecker.java
-D:\Portfolio ICT\Portfolio ICT\Tweede jaar\Blok 3\Integration and Communication\Opdrachten\WebShop\IAC_Webshop\src\main\java\webshop\services\dataCheckers\DiscountDataChecker.java
-D:\Portfolio ICT\Portfolio ICT\Tweede jaar\Blok 3\Integration and Communication\Opdrachten\WebShop\IAC_Webshop\src\main\java\webshop\services\assemblers\CheckoutModelAssembler.java
-D:\Portfolio ICT\Portfolio ICT\Tweede jaar\Blok 3\Integration and Communication\Opdrachten\WebShop\IAC_Webshop\src\main\java\webshop\controllers\ProductController.java
-D:\Portfolio ICT\Portfolio ICT\Tweede jaar\Blok 3\Integration and Communication\Opdrachten\WebShop\IAC_Webshop\src\main\java\webshop\services\assemblers\AccountModelAssembler.java
-D:\Portfolio ICT\Portfolio ICT\Tweede jaar\Blok 3\Integration and Communication\Opdrachten\WebShop\IAC_Webshop\src\main\java\model\Discount.java
-D:\Portfolio ICT\Portfolio ICT\Tweede jaar\Blok 3\Integration and Communication\Opdrachten\WebShop\IAC_Webshop\src\main\java\webshop\services\dataCheckers\CategoryDataChecker.java
-D:\Portfolio ICT\Portfolio ICT\Tweede jaar\Blok 3\Integration and Communication\Opdrachten\WebShop\IAC_Webshop\src\main\java\webshop\services\assemblers\RoleModelAssembler.java
-D:\Portfolio ICT\Portfolio ICT\Tweede jaar\Blok 3\Integration and Communication\Opdrachten\WebShop\IAC_Webshop\src\main\java\model\Product.java
-D:\Portfolio ICT\Portfolio ICT\Tweede jaar\Blok 3\Integration and Communication\Opdrachten\WebShop\IAC_Webshop\src\main\java\webshop\Application.java
-D:\Portfolio ICT\Portfolio ICT\Tweede jaar\Blok 3\Integration and Communication\Opdrachten\WebShop\IAC_Webshop\src\main\java\webshop\services\assemblers\ProductModelAssembler.java
-D:\Portfolio ICT\Portfolio ICT\Tweede jaar\Blok 3\Integration and Communication\Opdrachten\WebShop\IAC_Webshop\src\main\java\webshop\controllers\RoleController.java
-D:\Portfolio ICT\Portfolio ICT\Tweede jaar\Blok 3\Integration and Communication\Opdrachten\WebShop\IAC_Webshop\src\main\java\webshop\services\dataCheckers\OrderDataChecker.java
-D:\Portfolio ICT\Portfolio ICT\Tweede jaar\Blok 3\Integration and Communication\Opdrachten\WebShop\IAC_Webshop\src\main\java\repositories\CategoryRepository.java
-D:\Portfolio ICT\Portfolio ICT\Tweede jaar\Blok 3\Integration and Communication\Opdrachten\WebShop\IAC_Webshop\src\main\java\model\Account.java
-D:\Portfolio ICT\Portfolio ICT\Tweede jaar\Blok 3\Integration and Communication\Opdrachten\WebShop\IAC_Webshop\src\main\java\webshop\services\dataCheckers\RoleDataChecker.java
-D:\Portfolio ICT\Portfolio ICT\Tweede jaar\Blok 3\Integration and Communication\Opdrachten\WebShop\IAC_Webshop\src\main\java\webshop\services\converters\Converter.java
-D:\Portfolio ICT\Portfolio ICT\Tweede jaar\Blok 3\Integration and Communication\Opdrachten\WebShop\IAC_Webshop\src\main\java\repositories\ProductRepository.java
-D:\Portfolio ICT\Portfolio ICT\Tweede jaar\Blok 3\Integration and Communication\Opdrachten\WebShop\IAC_Webshop\src\main\java\model\Checkout.java
+D:\Library\School\Integration and Communication\Webshop\IAC_Webshop\src\main\java\repositories\AddressRepository.java
+D:\Library\School\Integration and Communication\Webshop\IAC_Webshop\src\main\java\webshop\controllers\DiscountController.java
+D:\Library\School\Integration and Communication\Webshop\IAC_Webshop\src\main\java\webshop\controllers\OrderController.java
+D:\Library\School\Integration and Communication\Webshop\IAC_Webshop\src\main\java\model\Address.java
+D:\Library\School\Integration and Communication\Webshop\IAC_Webshop\src\main\java\webshop\tools\datacheckers\OrderDataChecker.java
+D:\Library\School\Integration and Communication\Webshop\IAC_Webshop\src\main\java\webshop\tools\datacheckers\AccountDataChecker.java
+D:\Library\School\Integration and Communication\Webshop\IAC_Webshop\src\main\java\repositories\AccountRepository.java
+D:\Library\School\Integration and Communication\Webshop\IAC_Webshop\src\main\java\webshop\tools\converters\Converter.java
+D:\Library\School\Integration and Communication\Webshop\IAC_Webshop\src\main\java\webshop\tools\assemblers\AccountModelAssembler.java
+D:\Library\School\Integration and Communication\Webshop\IAC_Webshop\src\main\java\webshop\tools\assemblers\DiscountModelAssembler.java
+D:\Library\School\Integration and Communication\Webshop\IAC_Webshop\src\main\java\webshop\tools\exceptions\UnableToDeleteException.java
+D:\Library\School\Integration and Communication\Webshop\IAC_Webshop\src\main\java\webshop\tools\datacheckers\ProductDataChecker.java
+D:\Library\School\Integration and Communication\Webshop\IAC_Webshop\src\main\java\webshop\tools\datacheckers\RoleDataChecker.java
+D:\Library\School\Integration and Communication\Webshop\IAC_Webshop\src\main\java\model\Checkout.java
+D:\Library\School\Integration and Communication\Webshop\IAC_Webshop\src\main\java\model\Cart.java
+D:\Library\School\Integration and Communication\Webshop\IAC_Webshop\src\main\java\model\Account.java
+D:\Library\School\Integration and Communication\Webshop\IAC_Webshop\src\main\java\model\Order.java
+D:\Library\School\Integration and Communication\Webshop\IAC_Webshop\src\main\java\webshop\tools\exceptions\UnableToSaveException.java
+D:\Library\School\Integration and Communication\Webshop\IAC_Webshop\src\main\java\webshop\tools\assemblers\CategoryModelAssembler.java
+D:\Library\School\Integration and Communication\Webshop\IAC_Webshop\src\main\java\webshop\controllers\CheckoutController.java
+D:\Library\School\Integration and Communication\Webshop\IAC_Webshop\src\main\java\webshop\tools\datacheckers\CheckoutDataChecker.java
+D:\Library\School\Integration and Communication\Webshop\IAC_Webshop\src\main\java\repositories\CheckoutRepository.java
+D:\Library\School\Integration and Communication\Webshop\IAC_Webshop\src\main\java\webshop\controllers\CategoryController.java
+D:\Library\School\Integration and Communication\Webshop\IAC_Webshop\src\main\java\webshop\tools\assemblers\AddressModelAssembler.java
+D:\Library\School\Integration and Communication\Webshop\IAC_Webshop\src\main\java\webshop\tools\datacheckers\CategoryDataChecker.java
+D:\Library\School\Integration and Communication\Webshop\IAC_Webshop\src\main\java\webshop\tools\exceptions\NotFoundAdvice.java
+D:\Library\School\Integration and Communication\Webshop\IAC_Webshop\src\main\java\model\Category.java
+D:\Library\School\Integration and Communication\Webshop\IAC_Webshop\src\main\java\webshop\tools\datacheckers\DiscountDataChecker.java
+D:\Library\School\Integration and Communication\Webshop\IAC_Webshop\src\main\java\model\Discount.java
+D:\Library\School\Integration and Communication\Webshop\IAC_Webshop\src\main\java\webshop\Application.java
+D:\Library\School\Integration and Communication\Webshop\IAC_Webshop\src\main\java\repositories\RoleRepository.java
+D:\Library\School\Integration and Communication\Webshop\IAC_Webshop\src\main\java\repositories\CategoryRepository.java
+D:\Library\School\Integration and Communication\Webshop\IAC_Webshop\src\main\java\model\Product.java
+D:\Library\School\Integration and Communication\Webshop\IAC_Webshop\src\main\java\webshop\tools\assemblers\OrderModelAssembler.java
+D:\Library\School\Integration and Communication\Webshop\IAC_Webshop\src\main\java\repositories\ProductRepository.java
+D:\Library\School\Integration and Communication\Webshop\IAC_Webshop\src\main\java\webshop\tools\exceptions\RequestNotFoundException.java
+D:\Library\School\Integration and Communication\Webshop\IAC_Webshop\src\main\java\repositories\CartRepository.java
+D:\Library\School\Integration and Communication\Webshop\IAC_Webshop\src\main\java\webshop\tools\exceptions\UnableToUpdateException.java
+D:\Library\School\Integration and Communication\Webshop\IAC_Webshop\src\main\java\webshop\tools\datacheckers\CartDataChecker.java
+D:\Library\School\Integration and Communication\Webshop\IAC_Webshop\src\main\java\webshop\controllers\AccountController.java
+D:\Library\School\Integration and Communication\Webshop\IAC_Webshop\src\main\java\repositories\DiscountRepository.java
+D:\Library\School\Integration and Communication\Webshop\IAC_Webshop\src\main\java\repositories\OrderRepository.java
+D:\Library\School\Integration and Communication\Webshop\IAC_Webshop\src\main\java\model\Role.java
+D:\Library\School\Integration and Communication\Webshop\IAC_Webshop\src\main\java\webshop\controllers\ProductController.java
+D:\Library\School\Integration and Communication\Webshop\IAC_Webshop\src\main\java\webshop\controllers\CartController.java
+D:\Library\School\Integration and Communication\Webshop\IAC_Webshop\src\main\java\webshop\tools\assemblers\CartModelAssembler.java
+D:\Library\School\Integration and Communication\Webshop\IAC_Webshop\src\main\java\webshop\tools\assemblers\ProductModelAssembler.java
+D:\Library\School\Integration and Communication\Webshop\IAC_Webshop\src\main\java\webshop\controllers\AddressController.java
+D:\Library\School\Integration and Communication\Webshop\IAC_Webshop\src\main\java\webshop\controllers\RoleController.java
+D:\Library\School\Integration and Communication\Webshop\IAC_Webshop\src\main\java\webshop\tools\assemblers\CheckoutModelAssembler.java
+D:\Library\School\Integration and Communication\Webshop\IAC_Webshop\src\main\java\webshop\tools\datacheckers\AddressDataChecker.java
+D:\Library\School\Integration and Communication\Webshop\IAC_Webshop\src\main\java\webshop\tools\assemblers\RoleModelAssembler.java
