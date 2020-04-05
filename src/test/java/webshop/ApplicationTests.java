@@ -119,7 +119,7 @@ public class ApplicationTests {
 	//Een test om een bestaand en niet-gekoppeld account te DELETEn. (200 OK)
 	@Test
 	public void deleteAccount() throws Exception {
-		this.mockMvc.perform(delete("/Account/7")).andDo(print()).andExpect(status().isOk());
+		this.mockMvc.perform(delete("/Account/6")).andDo(print()).andExpect(status().isOk());
 	}
 	
 	//Een test om een niet-bestaand of gekoppeld account te DELETEn. (400 Bad Request)
