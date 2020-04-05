@@ -29,7 +29,6 @@ jobs:
     # Build het project met Maven.
     - name: Build with Maven
       run: mvn -B package --file pom.xml
-      if: failure()
       
     # Upload de changes van de master branch naar een artifact repository.
     - name: Uploads artifact
