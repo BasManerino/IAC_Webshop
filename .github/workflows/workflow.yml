@@ -29,6 +29,10 @@ jobs:
     # Build het project met Maven.
     - name: Build with Maven
       run: mvn -B package --file pom.xml
+    
+    # Run alle tests.
+    - name: Test with Maven
+      run: mvn test
       
     # Upload de changes van de master branch naar een artifact repository.
     - name: Uploads artifact
