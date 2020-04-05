@@ -1,5 +1,5 @@
 # Deze workflow zal de master branch builden, testen en de veranderingen uploaden naar een artifact repository
-# zodra hier een push of pull request naar wordt gemaakt.
+# zodra hier een push of pull request naar wordt gemaakt. 
 
 name: Java CI with Maven
 
