@@ -22,6 +22,10 @@
 	<dependencies>
 
 		<!-- https://mvnrepository.com/artifact/org.yaml/snakeyaml -->
+		<!-- Check Your Dependencies with Snyk -->
+		<!--  OWASP top 10 – 2017: A9-Using Components with Known Vulnerabilities -->
+		<!-- package snakeyaml was op versie 1.18, deze versie had een kwetsbaarheid Denial of service,
+		dit is opgelost door de versie hieronder te verhogen naar 1.26-->
 		<dependency>
 			<groupId>org.yaml</groupId>
 			<artifactId>snakeyaml</artifactId>

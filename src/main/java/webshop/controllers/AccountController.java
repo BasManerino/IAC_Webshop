@@ -46,6 +46,8 @@ public class AccountController {
 	}
 
 	@GetMapping("/{id}") // Get een account opbasis van de megegeven account id
+	// Hier wordt de OWASP top 10 – 2017: A1-Injection kwetsbaarheid onderzocht en opgelost.
+	// Injectie mogelijkheden, zoals SQL, OS en LDAP injectie kunnen niet optreden
 	public EntityModel<Account> getAccount(@PathVariable Long id) {
 		Account account = repository.findById(id).orElseThrow(() -> new RequestNotFoundException("account", id));
 
