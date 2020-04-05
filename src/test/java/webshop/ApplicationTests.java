@@ -38,6 +38,7 @@ public class ApplicationTests {
 	@Test
 	public void getAccount() throws Exception {
 		this.mockMvc.perform(get("/Account/1")).andDo(print()).andExpect(status().isOk());
+		this.mockMvc.perform(get("/Account/" + 10)).andDo(print()).andExpect(status().isNotFound());
 	}
 
 	//Een test om een niet-bestaand account te GETten. (404 Not Found)
@@ -118,13 +119,13 @@ public class ApplicationTests {
 	//Een test om een bestaand en niet-gekoppeld account te DELETEn. (200 OK)
 	@Test
 	public void deleteAccount() throws Exception {
-		this.mockMvc.perform(delete("/Account/3")).andDo(print()).andExpect(status().isOk());
+		this.mockMvc.perform(delete("/Account/7")).andDo(print()).andExpect(status().isOk());
 	}
 	
 	//Een test om een niet-bestaand of gekoppeld account te DELETEn. (400 Bad Request)
 	@Test
 	public void deleteAccountBadRequest() throws Exception {
-		this.mockMvc.perform(delete("/Account/1")).andDo(print()).andExpect(status().isBadRequest());
+		this.mockMvc.perform(delete("/Account/10")).andDo(print()).andExpect(status().isBadRequest());
 	}
 	
     //================================================================================
@@ -339,20 +340,40 @@ public class ApplicationTests {
 		this.mockMvc.perform(get("/Checkout/10")).andDo(print()).andExpect(status().isNotFound());
 	}
 	
-	//Een test om een niet-bestaand checkout te wijzigen. (400 Bad Request)
+	//Een test om een new categorie te maken. (201 Created)
 	@Test
-	public void updateCheckoutBadRequest() throws Exception {
+	public void saveCheckout() throws Exception {
 		//De huidige datum.
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd");  
         LocalDateTime now = LocalDateTime.now();
 		//Dit is een test JSON body voor een account.
 		String checkout = "{\r\n" + 
 				"    \"pay_method\": \"iDeal\",\r\n" + 
-				"    \"offer_code\": 1,\r\n" + 
-				"    \"pay_date\": \"" + dtf.format(now) + "\"\r\n" + 
+				"    \"pay_date\": \"" + dtf.format(now) + "\",\r\n" + 
+				"    \"order\": {\r\n" + 
+				"    	\"id\": 1\r\n" + 
+				"    }\r\n" + 
 				"}";
 		
-		this.mockMvc.perform(put("/Checkout/10").contentType(MediaType.APPLICATION_JSON).content(checkout)).andDo(print()).andExpect(status().isBadRequest());
+		this.mockMvc.perform(post("/Checkout").contentType(MediaType.APPLICATION_JSON).content(checkout)).andDo(print()).andExpect(status().isCreated());
+	}
+	
+	//Een test om een correcte checkout te valideren. (200 OK)
+	@Test
+	public void validate() throws Exception {
+		//De huidige datum.
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd");  
+        LocalDateTime now = LocalDateTime.now();
+		//Dit is een test JSON body voor een account.
+		String checkout = "{\r\n" + 
+				"    \"pay_method\": \"iDeal\",\r\n" + 
+				"    \"pay_date\": \"" + dtf.format(now) + "\",\r\n" + 
+				"    \"order\": {\r\n" + 
+				"    	\"id\": 1\r\n" + 
+				"    }\r\n" + 
+				"}";
+		
+		this.mockMvc.perform(put("/Checkout/Check").contentType(MediaType.APPLICATION_JSON).content(checkout)).andDo(print()).andExpect(status().isOk());
 	}
 	
 	//Een test om een bestaand en niet-gekoppeled checkout te DELETEn. (200 OK)
@@ -425,7 +446,7 @@ public class ApplicationTests {
 	
 	//Een test om een new order te maken. (201 Created)
 	@Test
-	public void saveOrder() throws Exception {
+	public void saveOrder_table() throws Exception {
 		//De huidige datum.
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd");  
         LocalDateTime now = LocalDateTime.now();  
@@ -442,15 +463,15 @@ public class ApplicationTests {
 				"    ]\r\n" + 
 				"}";
 		
-		this.mockMvc.perform(post("/Order").contentType(MediaType.APPLICATION_JSON).content(order)).andDo(print()).andExpect(status().isCreated());
+		this.mockMvc.perform(post("/Order/").contentType(MediaType.APPLICATION_JSON).content(order)).andDo(print()).andExpect(status().isCreated());
 	}
 	
 	//Een test om een bestaand order te wijzigen. (201 Created)
 	@Test
-	public void updateOrder() throws Exception {
+	public void updateOrder_tableOK() throws Exception {
 		//De huidige datum.
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd");  
-        LocalDateTime now = LocalDateTime.now();  
+        LocalDateTime now = LocalDateTime.now();
 		//Dit is een test JSON body voor een order.
         String order = "{\r\n" + 
         		"    \"date\": \"" + dtf.format(now) + "\",\r\n" + 
@@ -491,7 +512,7 @@ public class ApplicationTests {
 				"    ]\r\n" + 
 				"}";
 		
-		this.mockMvc.perform(put("/Order/10").contentType(MediaType.APPLICATION_JSON).content(order)).andDo(print()).andExpect(status().isBadRequest());
+		this.mockMvc.perform(put("/Order/1").contentType(MediaType.APPLICATION_JSON).content(order)).andDo(print()).andExpect(status().isBadRequest());
 	}
 	
 	//Een test om een bestaand en niet-gekoppeled order te DELETEn. (200 OK)

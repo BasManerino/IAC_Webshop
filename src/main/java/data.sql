@@ -1,6 +1,7 @@
 insert into role (id, name, description) values (1, 'admin', 'Administrator');
 insert into role (id, name, description) values (2, 'empl', 'Employee');
 insert into role (id, name, description) values (3, 'guest', 'Guest');
+insert into role (id, name, description) values (4, 'test', 'test');
 
 insert into address (id, street, house_number, city, state, postal_code, country) values (1, 'street', 1, 'city', 'state', '3152NJ', 'country');
 insert into address (id, street, house_number, city, state, postal_code, country) values (2, 'street2', 2, 'city2', 'state2', '3152NJ', 'country2');
@@ -25,7 +26,7 @@ insert into account (id, created_on, name, phone, email, address_id, role_id, ca
 
 insert into order_table (id, date, total_price, account_id) values (1, '2020-03-21', 88.97, 1);
 insert into order_table (id, date, total_price, account_id) values (2, '2020-03-22', 109.96, 1);
-insert into order_table (id, date, total_price, account_id) values (3, '2020-03-23', 14.3, 1);
+insert into order_table (id, date, total_price, account_id) values (3, '2020-03-23', 52.98, 1);
 
 insert into product (id, name, description, normal_price, discount_price, available, image_id) values (1, 'Shoes', 'Black Shoes', 25.99, 'Geen', true, 'image');
 insert into product (id, name, description, normal_price, discount_price, available, image_id) values (2, 'Shoes', 'Red Shoes', 26.99, 'Geen', true,'image');
@@ -33,6 +34,7 @@ insert into product (id, name, description, normal_price, discount_price, availa
 insert into product (id, name, description, normal_price, discount_price, available, image_id) values (4, 'Shirt', 'Purple Shirt', 28.99, 'Geen', false,'image');
 insert into product (id, name, description, normal_price, discount_price, available, image_id) values (5, 'Jacket', 'Gray Jacket', 29.99, 'Geen', true,'image');
 insert into product (id, name, description, normal_price, discount_price, available, image_id) values (6, 'Jacket', 'Brown Jacket', 30.99, 'Geen', false,'image');
+insert into product (id, name, description, normal_price, discount_price, available, image_id) values (7, 'test', 'test', 1.1, 'Geen', false,'test');
 
 insert into order_product (product_id, order_id) values (1,2);
 insert into order_product (product_id, order_id) values (2,2);
