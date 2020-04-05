@@ -81,17 +81,23 @@ public class AccountController {
 		}
 	}
 
-	@SuppressWarnings("unused")
 	@PutMapping("/{id}") // Een account wijzigen op basis van het id die meegestuurd als PathVariable
 	ResponseEntity<?> updateAccount(@RequestBody Account newAccount, @PathVariable long id) {
 		try {
 			// Om te voorkomen dat er een nieuwe account gemaakt te worden als die account
-			// niet bestaat
+			// niet bestaat en om de cart daarvan in de geupdated cart te zetten
 			Account accountTest = repository.findById(id).orElseThrow(() -> new UnableToUpdateException("account", id));
 			if (dataChecker.accountChecker(newAccount)) { // Check account gegevens
-
+				Cart cart = accountTest.giveCart();
 				Account accountToUpdate = newAccount;
 				accountToUpdate.setId(id); // zet de megegeven id
+				accountToUpdate.setCart(cart);
+				if (newAccount.giveAddress() == null) {
+					accountToUpdate.setAddress(accountTest.giveAddress());
+				}
+				if (newAccount.giveRole() == null) {
+					accountToUpdate.setRole(accountTest.giveRole());
+				}
 				Account updatedAccount = repository.save(accountToUpdate); // Sla de wijzigingen op
 
 				// Maak een entitymodel van het opgeslaagde account met zelflink
