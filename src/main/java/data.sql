@@ -7,6 +7,7 @@ insert into address (id, street, house_number, city, state, postal_code, country
 insert into address (id, street, house_number, city, state, postal_code, country) values (2, 'street2', 2, 'city2', 'state2', '3152NJ', 'country2');
 insert into address (id, street, house_number, city, state, postal_code, country) values (3, 'street3', 3, 'city3', 'state3', '3152NJ', 'country3');
 insert into address (id, street, house_number, city, state, postal_code, country) values (4, 'street4', 4, 'city4', 'state4', '3152NJ', 'country4');
+insert into address (id, street, house_number, city, state, postal_code, country) values (5, 'street4', 4, 'city4', 'state4', '3152NJ', 'country4');
 
 insert into cart (id) values (1);
 insert into cart (id) values (2);
@@ -49,6 +50,7 @@ insert into order_product (product_id, order_id) values (2,3);
 insert into category (id, name, description, image_id) values (1, 'New', 'Gategory for the new products', 'No Image');
 insert into category (id, name, description, image_id) values (2, 'Clothes', 'Clothes Products', 'Image');
 insert into category (id, name, description, image_id) values (3, 'Shoes', 'Shoes Products', 'Image');
+insert into category (id, name, description, image_id) values (4, 'test', 'test', 'Image test');
 
 insert into product_category (product_id, category_id) values (1,3);
 insert into product_category (product_id, category_id) values (2,3);
